@@ -8,9 +8,9 @@ CREATE TABLE Airport (
 	City 		VARCHAR(100) NOT NULL
 );
 
-COMMENT ON TABLE Airport			IS 'Сведения об аэропортах';
-COMMENT ON COLUMN Airport.AirportID	IS 'Название аэропорта';
-COMMENT ON COLUMN Airport.AirportID	IS 'Город, в котором находится аэропорт';
+COMMENT ON TABLE Airport IS 'Сведения об аэропортах';
+COMMENT ON COLUMN Airport.AirportID	IS 'название аэропорта';
+COMMENT ON COLUMN Airport.AirportID	IS 'город, в котором находится аэропорт';
 
 /*----------------------------------------------------------------------------------------------------------*/
 
@@ -20,9 +20,9 @@ CREATE TABLE Airline (
 	IATACode 	VARCHAR(3) NOT NULL UNIQUE
 );
 
-COMMENT ON TABLE Airline				IS 'Сведения об авиакомпаниях';
-COMMENT ON COLUMN Airline.AirlineName	IS 'Название авиакомпании';
-COMMENT ON COLUMN Airline.IATACode		IS 'Уникальный код авиакомпании';
+COMMENT ON TABLE Airline IS 'Сведения об авиакомпаниях';
+COMMENT ON COLUMN Airline.AirlineName	IS 'название авиакомпании';
+COMMENT ON COLUMN Airline.IATACode		IS 'уникальный код авиакомпании';
 
 /*----------------------------------------------------------------------------------------------------------*/
 
@@ -33,10 +33,10 @@ CREATE TABLE Plane (
 	Capacity 	INT NOT NULL
 );
 
-COMMENT ON TABLE Plane				IS 'Сведения о самолетах';
-COMMENT ON COLUMN Plane.AirlineID	IS 'ID авиакомпании, которой принадлежит самолет';
-COMMENT ON COLUMN Plane.Model		IS 'Модель самолета';
-COMMENT ON COLUMN Plane.Capacity	IS 'Вместимость самолета (чел.)';
+COMMENT ON TABLE Plane IS 'Сведения о самолетах';
+COMMENT ON COLUMN Plane.AirlineID	IS 'id авиакомпании, которой принадлежит самолет';
+COMMENT ON COLUMN Plane.Model		IS 'модель самолета';
+COMMENT ON COLUMN Plane.Capacity	IS 'вместимость самолета (чел.)';
 
 /*----------------------------------------------------------------------------------------------------------*/
 
@@ -50,13 +50,13 @@ CREATE TABLE Flight (
     BaseTicketPrice 	DECIMAL(10, 2) NOT NULL               -- базовая стоимость билета
 );
 
-COMMENT ON TABLE Flight						IS 'Сведения о рейсах';
-COMMENT ON COLUMN Flight.PlaneID			IS 'ID самолета';
-COMMENT ON COLUMN Flight.DepartureAirportID	IS 'ID аэропорта вылета';
-COMMENT ON COLUMN Flight.ArrivalAirportID	IS 'ID аэропорта прилета';
-COMMENT ON COLUMN Flight.FlightTime			IS 'Время вылета';
-COMMENT ON COLUMN Flight.Duration			IS 'Время в пути';
-COMMENT ON COLUMN Flight.BaseTicketPrice	IS 'Базовая стоимость билета (без учета обеда на борту)';
+COMMENT ON TABLE Flight IS 'Сведения о рейсах';
+COMMENT ON COLUMN Flight.PlaneID			IS 'id самолета';
+COMMENT ON COLUMN Flight.DepartureAirportID	IS 'id аэропорта вылета';
+COMMENT ON COLUMN Flight.ArrivalAirportID	IS 'id аэропорта прилета';
+COMMENT ON COLUMN Flight.FlightTime			IS 'время вылета';
+COMMENT ON COLUMN Flight.Duration			IS 'время в пути';
+COMMENT ON COLUMN Flight.BaseTicketPrice	IS 'базовая стоимость билета (без учета обеда на борту)';
 
 /*----------------------------------------------------------------------------------------------------------*/
 
@@ -70,13 +70,13 @@ CREATE TABLE Ticket (
 	Price 			DECIMAL(10, 2) DEFAULT 0.00
 );
 
-COMMENT ON TABLE Ticket					IS 'Сведения о билетах';
-COMMENT ON COLUMN Ticket.FlightID		IS 'ID рейса';
+COMMENT ON TABLE Ticket IS 'Сведения о билетах';
+COMMENT ON COLUMN Ticket.FlightID		IS 'id рейса';
 COMMENT ON COLUMN Ticket.FullName		IS 'ФИО пассажира';
-COMMENT ON COLUMN Ticket.PassportNumber	IS 'Серия и номер паспорта пассажира';
-COMMENT ON COLUMN Ticket.SeatNumber		IS 'Номер места в самолете';
-COMMENT ON COLUMN Ticket.Meal			IS 'Обед на борту (да/нет)';
-COMMENT ON COLUMN Ticket.Price			IS 'Итоговая стоимость билета (заполняется/изменяется триггером)';
+COMMENT ON COLUMN Ticket.PassportNumber	IS 'серия и номер паспорта пассажира';
+COMMENT ON COLUMN Ticket.SeatNumber		IS 'номер места в самолете';
+COMMENT ON COLUMN Ticket.Meal			IS 'обед на борту (да/нет)';
+COMMENT ON COLUMN Ticket.Price			IS 'итоговая стоимость билета (заполняется/изменяется триггером)';
 
 /*----------------------------------------------------------------------------------------------------------*/
 
