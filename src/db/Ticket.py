@@ -12,19 +12,25 @@ INSERT = '''
 
 SELECT_ONE = '''
     SELECT FlightID, FullName, PassportNumber, SeatNumber, Meal, Price
-    FROM Flight
-    WHERE FlightID = %s;
+    FROM Ticket
+    WHERE TicketID = %s;
 '''
 
 
 UPDATE = '''
-    UPDATE Flight SET
+    UPDATE Ticket SET
         FlightID = %s,
         FullName = %s,
         PassportNumber = %s,
         SeatNumber = %s,
         Meal = %s
-    WHERE FlightID = %s;
+    WHERE TicketID = %s;
+'''
+
+
+DELETE = '''
+    DELETE FROM Ticket
+    WHERE TicketID = %s;
 '''
 
 
@@ -34,7 +40,7 @@ class Ticket(object):
     ticketid: int = None
     flightid: int = None
     fullname: str = None
-    passportnumber: int = None
+    passportnumber: str = None
     seatnumber: str = None
     meal: str = None
     price: float = None
@@ -79,3 +85,12 @@ class Ticket(object):
         conn.commit()
         conn.close()
         return self
+    
+    def delete(self):
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(DELETE, (self.ticketid, ))
+        finally:
+            conn.close()

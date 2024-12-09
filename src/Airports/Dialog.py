@@ -7,6 +7,8 @@ from PyQt5.QtWidgets import QPushButton # кновка
 from PyQt5.QtWidgets import QVBoxLayout # вертикальная разметка окна
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
 
+from PyQt5.Qt import QApplication
+
 
 SELECT_ONE = '''
     SELECT AirportName, City
@@ -20,16 +22,21 @@ class Dialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         
-        self.setWindowTitle('Аэропорт')
+        title = QApplication.translate('Airport.Dialog', 'Airport')
+        self.setWindowTitle(title)
         
-        name_lbl = QLabel('Название аэропорта', parent=self)
+        title = QApplication.translate('Airport.Dialog', 'Airport Name')
+        name_lbl = QLabel(title, parent=self)
         self.__name_edt = QLineEdit(parent=self)
         
-        city_lbl = QLabel('Город', parent=self)
+        title = QApplication.translate('Airport.Dialog', 'City')
+        city_lbl = QLabel(title, parent=self)
         self.__city_edt = QLineEdit(parent=self)
         
-        ok_btn = QPushButton('ОК', parent=self)
-        cancel_btn = QPushButton('Отмена', parent=self)
+        title = QApplication.translate('Airport.Dialog', 'OK')
+        ok_btn = QPushButton(title, parent=self)
+        title = QApplication.translate('Airport.Dialog', 'Cancel')
+        cancel_btn = QPushButton(title, parent=self)
         
         lay = QVBoxLayout(self)
         

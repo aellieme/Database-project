@@ -7,31 +7,41 @@ from PyQt5.QtWidgets import QPushButton # кновка
 from PyQt5.QtWidgets import QVBoxLayout # вертикальная разметка окна
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
 
+from PyQt5.Qt import QApplication
+
 
 class Dialog(QDialog):
     
     def __init__(self, parent=None):
         super().__init__(parent)
         
-        self.setWindowTitle('Билет')
+        title = QApplication.translate('Ticket.Dialog', 'Ticket')
+        self.setWindowTitle(title)
         
-        id_flight_lbl = QLabel('ID рейса', parent=self)
+        title = QApplication.translate('Ticket.Dialog', 'Flight ID')
+        id_flight_lbl = QLabel(title, parent=self)
         self.__id_flight_edt = QLineEdit(parent=self)
         
-        name_lbl = QLabel('ФИО пассажира', parent=self)
+        title = QApplication.translate('Ticket.Dialog', 'Passenger full name')
+        name_lbl = QLabel(title, parent=self)
         self.__name_edt = QLineEdit(parent=self)
         
-        passport_lbl = QLabel('Серия и номер паспорта', parent=self)
+        title = QApplication.translate('Ticket.Dialog', 'Passport series and number')
+        passport_lbl = QLabel(title, parent=self)
         self.__passport_edt = QLineEdit(parent=self)
         
-        seat_lbl = QLabel('Номер места', parent=self)
+        title = QApplication.translate('Ticket.Dialog', 'Seat number')
+        seat_lbl = QLabel(title, parent=self)
         self.__seat_edt = QLineEdit(parent=self)
         
-        meal_lbl = QLabel('Обед на борту', parent=self)
+        title = QApplication.translate('Ticket.Dialog', 'Lunch on board')
+        meal_lbl = QLabel(title, parent=self)
         self.__meal_edt = QLineEdit(parent=self)
         
-        ok_btn = QPushButton('ОК', parent=self)
-        cancel_btn = QPushButton('Отмена', parent=self)
+        title = QApplication.translate('Ticket.Dialog', 'OK')
+        ok_btn = QPushButton(title, parent=self)
+        title = QApplication.translate('Ticket.Dialog', 'Cancel')
+        cancel_btn = QPushButton(title, parent=self)
         
         lay = QVBoxLayout(self)
         

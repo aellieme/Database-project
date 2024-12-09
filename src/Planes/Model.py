@@ -9,12 +9,6 @@ SELECT = '''
 '''
 
 
-#INSERT = '''
-#    INSERT INTO Plane ( AirlineID, Model, Capacity )
-#    VALUES ( %s, %s, %s );
-#'''
-
-
 UPDATE = '''
     UPDATE Plane SET
         AirlineID = %s,
@@ -38,15 +32,6 @@ class Model(QSqlQueryModel):
     
     def fresh(self):
         self.setQuery(SELECT)
-    
-#    def add(self, id_airline, pmodel, capacity):
-#        conn = psycopg2.connect(**st.db_params)
-#        cursor = conn.cursor()
-#        data = (id_airline, pmodel, capacity)
-#        cursor.execute(INSERT, data)
-#        conn.commit()
-#        conn.close()
-#        self.fresh()
     
     def update(self, id_plane, id_airline, pmodel, capacity):
         # @FIXME: При редактировании без выбора выдаёт ошибку

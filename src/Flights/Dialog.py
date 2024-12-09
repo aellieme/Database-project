@@ -7,34 +7,45 @@ from PyQt5.QtWidgets import QPushButton # кновка
 from PyQt5.QtWidgets import QVBoxLayout # вертикальная разметка окна
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
 
+from PyQt5.Qt import QApplication
+
 
 class Dialog(QDialog):
     
     def __init__(self, parent=None):
         super().__init__(parent)
         
-        self.setWindowTitle('Рейс')
+        title = QApplication.translate('Flight.Dialog', 'Flight')
+        self.setWindowTitle(title)
         
-        id_plane_lbl = QLabel('ID самолета', parent=self)
+        title = QApplication.translate('Flight.Dialog', 'Plane ID')
+        id_plane_lbl = QLabel(title, parent=self)
         self.__id_plane_edt = QLineEdit(parent=self)
         
-        id_dairport_lbl = QLabel('ID аэропорта отпраления', parent=self)
+        title = QApplication.translate('Flight.Dialog', 'Departure Airport ID')
+        id_dairport_lbl = QLabel(title, parent=self)
         self.__id_dairport_edt = QLineEdit(parent=self)
         
-        id_aairport_lbl = QLabel('ID аэропорта прибытия', parent=self)
+        title = QApplication.translate('Flight.Dialog', 'Arrival Airport ID')
+        id_aairport_lbl = QLabel(title, parent=self)
         self.__id_aairport_edt = QLineEdit(parent=self)
         
-        ftime_lbl = QLabel('Дата и время отправления', parent=self)
+        title = QApplication.translate('Flight.Dialog', 'Departure date and time')
+        ftime_lbl = QLabel(title, parent=self)
         self.__ftime_edt = QLineEdit(parent=self)
         
-        duration_lbl = QLabel('Время полета', parent=self)
+        title = QApplication.translate('Flight.Dialog', 'Flight duration')
+        duration_lbl = QLabel(title, parent=self)
         self.__duration_edt = QLineEdit(parent=self)
         
-        bprice_lbl = QLabel('Базовая стоимость билета', parent=self)
+        title = QApplication.translate('Flight.Dialog', 'Base Ticket Price')
+        bprice_lbl = QLabel(title, parent=self)
         self.__bprice_edt = QLineEdit(parent=self)
         
-        ok_btn = QPushButton('ОК', parent=self)
-        cancel_btn = QPushButton('Отмена', parent=self)
+        title = QApplication.translate('Flight.Dialog', 'OK')
+        ok_btn = QPushButton(title, parent=self)
+        title = QApplication.translate('Flight.Dialog', 'Cancel')
+        cancel_btn = QPushButton(title, parent=self)
         
         lay = QVBoxLayout(self)
         

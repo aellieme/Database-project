@@ -1,18 +1,9 @@
 from PyQt5.QtWidgets import QTableView, QMessageBox
 from PyQt5.QtCore import pyqtSlot
-import psycopg2
-import settings as st
 import db
 
 from .Model import Model
 from .Dialog import Dialog
-
-
-SELECT_ONE = '''
-    SELECT AirportName, City
-    FROM Airport
-    WHERE AirportID = %s;
-'''
 
 
 class View(QTableView):
@@ -25,7 +16,6 @@ class View(QTableView):
         
         self.setSelectionBehavior(self.SelectRows)
         self.setSelectionMode(self.SingleSelection)
-        self.hideColumn(0)
         self.setWordWrap(False)
         
         vh = self.verticalHeader()
@@ -60,8 +50,7 @@ class View(QTableView):
     
     @pyqtSlot()
     def delete(self):
-        row = self.currentIndex().row()
-        id_airport = self.model().record(row).value(0)
         ans = QMessageBox.question(self, 'Аэропорт', 'Вы уверены?')
         if ans == QMessageBox.Yes:
-            self.model().delete(id_airport)
+            db.Airport(airportid=self.airportid).delete()
+            self.model().fresh()

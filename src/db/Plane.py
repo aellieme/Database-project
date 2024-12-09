@@ -26,6 +26,12 @@ UPDATE = '''
 '''
 
 
+DELETE = '''
+    DELETE FROM Plane
+    WHERE PlaneID = %s;
+'''
+
+
 @dataclass
 class Plane(object):
     
@@ -73,4 +79,13 @@ class Plane(object):
         conn.commit()
         conn.close()
         return self
+    
+    def delete(self):
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(DELETE, (self.planeid, ))
+        finally:
+            conn.close()
     

@@ -25,6 +25,12 @@ UPDATE = '''
 '''
 
 
+DELETE = '''
+    DELETE FROM Airport
+    WHERE AirportID = %s;
+'''
+
+
 @dataclass
 class Airport(object):
     
@@ -70,4 +76,13 @@ class Airport(object):
         (self.airportname, self.city) = next(cursor)
         conn.commit()
         conn.close()
-        return self 
+        return self
+    
+    def delete(self):
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(DELETE, (self.airportid, ))
+        finally:
+            conn.close()

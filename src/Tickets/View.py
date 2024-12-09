@@ -1,18 +1,9 @@
 from PyQt5.QtWidgets import QTableView, QMessageBox
 from PyQt5.QtCore import pyqtSlot
-import psycopg2
-import settings as st
 import db
 
 from .Model import Model
 from .Dialog import Dialog
-
-
-SELECT_ONE = '''
-    SELECT FlightID, FullName, PassportNumber, SeatNumber, Meal
-    FROM Flight
-    WHERE FlightID = %s;
-'''
 
 
 class View(QTableView):
@@ -62,8 +53,7 @@ class View(QTableView):
     @pyqtSlot()
     def delete(self):
         # @FIXME: При удалении без выбора удаляется первый по списку
-        row = self.currentIndex().row()
-        id_ticket = self.model().record(row).value(0)
         ans = QMessageBox.question(self, 'Билет', 'Вы уверены?')
         if ans == QMessageBox.Yes:
-            self.model().delete(id_ticket)
+            db.Ticket(ticketid=self.ticketid).delete()
+            self.model().fresh()

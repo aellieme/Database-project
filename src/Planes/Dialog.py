@@ -7,25 +7,33 @@ from PyQt5.QtWidgets import QPushButton # кновка
 from PyQt5.QtWidgets import QVBoxLayout # вертикальная разметка окна
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
 
+from PyQt5.Qt import QApplication
+
 
 class Dialog(QDialog):
     
     def __init__(self, parent=None):
         super().__init__(parent)
         
-        self.setWindowTitle('Самолет')
+        title = QApplication.translate('Plane.Dialog', 'Plane')
+        self.setWindowTitle(title)
         
-        id_airline_lbl = QLabel('ID авиакомпании', parent=self)
+        title = QApplication.translate('Plane.Dialog', 'Airline ID')
+        id_airline_lbl = QLabel(title, parent=self)
         self.__id_airline_edt = QLineEdit(parent=self)
         
-        pmodel_lbl = QLabel('Модель самолета', parent=self)
+        title = QApplication.translate('Plane.Dialog', 'Plane model')
+        pmodel_lbl = QLabel(title, parent=self)
         self.__pmodel_edt = QLineEdit(parent=self)
         
-        capacity_lbl = QLabel('Вместимость', parent=self)
+        title = QApplication.translate('Plane.Dialog', 'Capacity')
+        capacity_lbl = QLabel(title, parent=self)
         self.__capacity_edt = QLineEdit(parent=self)
         
-        ok_btn = QPushButton('ОК', parent=self)
-        cancel_btn = QPushButton('Отмена', parent=self)
+        title = QApplication.translate('Plane.Dialog', 'OK')
+        ok_btn = QPushButton(title, parent=self)
+        title = QApplication.translate('Plane.Dialog', 'Cancel')
+        cancel_btn = QPushButton(title, parent=self)
         
         lay = QVBoxLayout(self)
         

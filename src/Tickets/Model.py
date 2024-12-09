@@ -9,12 +9,6 @@ SELECT = '''
 '''
 
 
-#INSERT = '''
-#    INSERT INTO Ticket ( FlightID, FullName, PassportNumber, SeatNumber, Meal )
-#    VALUES ( %s, %s, %s, %s, %s );
-#'''
-
-
 UPDATE = '''
     UPDATE Flight SET
         FlightID = %s,
@@ -40,15 +34,6 @@ class Model(QSqlQueryModel):
     
     def fresh(self):
         self.setQuery(SELECT)
-    
-#    def add(self, id_flight, name, passport, seat, meal):
-#        conn = psycopg2.connect(**st.db_params)
-#        cursor = conn.cursor()
-#        data = (id_flight, name, passport, seat, meal)
-#        cursor.execute(INSERT, data)
-#        conn.commit()
-#        conn.close()
-#        self.fresh()
     
     def update(self, id_ticket, id_flight, name, passport, seat, meal):
         conn = psycopg2.connect(**st.db_params)

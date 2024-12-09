@@ -25,6 +25,12 @@ UPDATE = '''
 '''
 
 
+DELETE = '''
+    DELETE FROM Airline
+    WHERE AirlineID = %s;
+'''
+
+
 @dataclass
 class Airline(object):
     
@@ -71,3 +77,12 @@ class Airline(object):
         conn.commit()
         conn.close()
         return self
+    
+    def delete(self):
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(DELETE, (self.airlineid, ))
+        finally:
+            conn.close()

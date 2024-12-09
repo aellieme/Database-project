@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QApplication
 from PyQt5.QtCore import pyqtSlot
 from MainMenu import MainMenu
 import Airlines, Airports, Flights, Planes, Tickets
@@ -23,14 +23,17 @@ class MainWindow(QMainWindow):
     
     @pyqtSlot()
     def about(self):
-        title = 'Управление базой данных APIRPORT'
-        text = ('Программа для создания, удаления, управления ' +
-                'и редактирования базы данных AIRPORT')
+        title = QApplication.translate('Main Window',
+                                       'Database Management')
+        text = QApplication.translate('MainWindow.Help',
+                                      'Program for creating, deleting, managing\n'
+                                      'and editing an AIRPORT database')
         QMessageBox.about(self, title, text)
     
     @pyqtSlot()
     def about_qt(self):
-        title = 'Управление базой данных APIRPORT'
+        title = QApplication.translate('Main Window',
+                                       'Database Management')
         QMessageBox.aboutQt(self, title)
     
     @pyqtSlot()
