@@ -43,7 +43,7 @@ class Ticket(object):
     passportnumber: str = None
     seatnumber: str = None
     meal: str = None
-    price: float = None
+    price: int = None
     
     @property
     def ticket_data(self):

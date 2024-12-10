@@ -2,6 +2,8 @@ from dataclasses import dataclass
 import psycopg2
 import settings as st
 
+import datetime as dt
+
 
 INSERT = '''
     INSERT INTO Flight ( PlaneID, DepartureAirportID, ArrivalAirportID, FlightTime, Duration, BaseTicketPrice )
@@ -42,9 +44,9 @@ class Flight(object):
     planeid: int = None
     departureairportid: int = None
     arrivalairportid: int = None
-    flighttime: str = None
-    duration: str = None
-    baseticketprice: float = None
+    flighttime: dt.datetime = None
+    duration: dt.timedelta = None
+    baseticketprice: int = None
     
     @property
     def flight_data(self):
@@ -87,7 +89,7 @@ class Flight(object):
             with conn:
                 with conn.cursor() as cursor:
                     cursor.execute(SELECT_ONE, (self.flightid, ))
-                    (self.planeid, self.departureairportid, self.arrivalairportid, self.flighttime, 
+                    (self.planeid, self.departureairportid, self.arrivalairportid, self.flighttime,
                      self.duration, self.baseticketprice) = next(cursor)
         finally:
             conn.close()
