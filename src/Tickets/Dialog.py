@@ -3,7 +3,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog # диалоговое окно
 from PyQt5.QtWidgets import QLabel # надпись на окне
 from PyQt5.QtWidgets import QLineEdit # текст из одной строчки
-from PyQt5.QtWidgets import QComboBox
+from PyQt5.QtWidgets import QComboBox # выбор YES/NO
 from PyQt5.QtWidgets import QPushButton # кновка
 from PyQt5.QtWidgets import QVBoxLayout # вертикальная разметка окна
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
