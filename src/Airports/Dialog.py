@@ -63,10 +63,7 @@ class Dialog(QDialog):
     @property
     def name(self):
         result = self.__name_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        return result if result else None
     
     @name.setter
     def name(self, value):
@@ -75,10 +72,7 @@ class Dialog(QDialog):
     @property
     def city(self):
         result = self.__city_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        return result if result else None
     
     @city.setter
     def city(self, value):

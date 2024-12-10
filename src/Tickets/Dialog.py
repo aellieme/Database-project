@@ -3,11 +3,14 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog # диалоговое окно
 from PyQt5.QtWidgets import QLabel # надпись на окне
 from PyQt5.QtWidgets import QLineEdit # текст из одной строчки
+from PyQt5.QtWidgets import QComboBox
 from PyQt5.QtWidgets import QPushButton # кновка
 from PyQt5.QtWidgets import QVBoxLayout # вертикальная разметка окна
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
 
 from PyQt5.Qt import QApplication
+
+import db
 
 
 class Dialog(QDialog):
@@ -36,7 +39,8 @@ class Dialog(QDialog):
         
         title = QApplication.translate('Ticket.Dialog', 'Lunch on board')
         meal_lbl = QLabel(title, parent=self)
-        self.__meal_edt = QLineEdit(parent=self)
+        self.__meal_edt = QComboBox(parent=self)
+        self.__meal_edt.addItems(['NO', 'YES'])
         
         title = QApplication.translate('Ticket.Dialog', 'OK')
         ok_btn = QPushButton(title, parent=self)
@@ -86,29 +90,26 @@ class Dialog(QDialog):
     
     @pyqtSlot()
     def finish(self):
-        if self.id_flight is None or self.name is None or self.city is None or self.passport is None or self.seat is None:
+        print(self.meal)
+        if self.id_flight is None or self.name is None or self.passport is None or self.seat is None:
             return 
         self.accept()
     
     @property
     def id_flight(self):
         result = self.__id_flight_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        if result and result.isdigit() and db.Flight(flightid=int(result)).exist_key():
+            return int(result)
+        return None
     
     @id_flight.setter
     def id_flight(self, value):
-        self.__id_flight_edt.setText(value)
+        self.__id_flight_edt.setText(str(value))
     
     @property
     def name(self):
         result = self.__name_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        return result if result else None
     
     @name.setter
     def name(self, value):
@@ -117,10 +118,7 @@ class Dialog(QDialog):
     @property
     def passport(self):
         result = self.__passport_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        return result if result else None
     
     @passport.setter
     def passport(self, value):
@@ -129,10 +127,7 @@ class Dialog(QDialog):
     @property
     def seat(self):
         result = self.__seat_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        return result if result else None
     
     @seat.setter
     def seat(self, value):
@@ -140,15 +135,15 @@ class Dialog(QDialog):
     
     @property
     def meal(self):
-        result = self.__meal_edt.text().strip()
-        if result == '':
-            return 'NO'
-        else:
-            return result
+        result = self.__meal_edt.currentText().strip()
+        return result
     
     @meal.setter
     def meal(self, value):
-        self.__meal_edt.setText(value)
+        print(value)
+        if value == 'YES':
+            self.__meal_edt.setItemText(0, 'YES')
+            self.__meal_edt.setItemText(1, 'NO')
     
     def get(self, data):
         data.flightid = self.id_flight

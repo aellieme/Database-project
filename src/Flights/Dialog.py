@@ -1,13 +1,38 @@
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, QTime, QDateTime
 
 from PyQt5.QtWidgets import QDialog # диалоговое окно
 from PyQt5.QtWidgets import QLabel # надпись на окне
 from PyQt5.QtWidgets import QLineEdit # текст из одной строчки
+from PyQt5.QtWidgets import QDateTimeEdit # ввод даты и времени
+from PyQt5.QtWidgets import QTimeEdit # ввод времени
 from PyQt5.QtWidgets import QPushButton # кновка
 from PyQt5.QtWidgets import QVBoxLayout # вертикальная разметка окна
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
 
 from PyQt5.Qt import QApplication
+
+import db
+
+from datetime import datetime, timedelta
+
+
+def is_numeric(string: str) -> bool:
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
+
+def convert_to_datetime(qdatetime: QDateTime) -> datetime:
+    return datetime(qdatetime.date().year(), qdatetime.date().month(), qdatetime.date().day(), qdatetime.time().hour(), qdatetime.time().minute())
+
+
+def convert_to_timedelta(time: QTime) -> timedelta:
+    return timedelta(hours=time.hour(), minutes=time.minute())
+
+
+def convert_to_qdatetime(dt: datetime) -> QDateTime:
+    return QDateTime(dt.year, dt.month, dt.day, dt.hour, dt.minute)
 
 
 class Dialog(QDialog):
@@ -32,11 +57,13 @@ class Dialog(QDialog):
         
         title = QApplication.translate('Flight.Dialog', 'Departure date and time')
         ftime_lbl = QLabel(title, parent=self)
-        self.__ftime_edt = QLineEdit(parent=self)
+        self.__ftime_edt = QDateTimeEdit(parent=self)
+        dt = QDateTime.currentDateTime()
+        self.__ftime_edt.setDateTime(dt)
         
         title = QApplication.translate('Flight.Dialog', 'Flight duration')
         duration_lbl = QLabel(title, parent=self)
-        self.__duration_edt = QLineEdit(parent=self)
+        self.__duration_edt = QTimeEdit()
         
         title = QApplication.translate('Flight.Dialog', 'Base Ticket Price')
         bprice_lbl = QLabel(title, parent=self)
@@ -96,94 +123,84 @@ class Dialog(QDialog):
     
     @pyqtSlot()
     def finish(self):
-        if self.id_plane is None or self.id_dairport is None or self.id_aairport or self.ftime is None or self.duration is None:
+        if self.id_plane is None or self.id_dairport is None or self.id_aairport is None or self.bprice is None:
             return 
         self.accept()
     
     @property
     def id_plane(self):
         result = self.__id_plane_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        if result and result.isdigit() and db.Plane(planeid=int(result)).exist_key():
+            return int(result)
+        return None
     
     @id_plane.setter
     def id_plane(self, value):
-        self.__id_plane_edt.setText(value)
+        self.__id_plane_edt.setText(str(value))
     
     @property
     def id_dairport(self):
         result = self.__id_dairport_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        if result and result.isdigit() and db.Airport(airportid=int(result)).exist_key():
+            return int(result)
+        return None
     
     @id_dairport.setter
     def id_dairport(self, value):
-        self.__id_dairport_edt.setText(value)
+        self.__id_dairport_edt.setText(str(value))
     
     @property
     def id_aairport(self):
         result = self.__id_aairport_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        if result and result.isdigit() and db.Airport(airportid=int(result)).exist_key():
+            return int(result)
+        return None
     
     @id_aairport.setter
     def id_aairport(self, value):
-        self.__id_aairport_edt.setText(value)
+        self.__id_aairport_edt.setText(str(value))
     
     @property
     def ftime(self):
-        result = self.__ftime_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        result = self.__ftime_edt.dateTime()
+        return result
     
     @ftime.setter
     def ftime(self, value):
-        self.__ftime_edt.setText(value)
+        self.__ftime_edt.setDateTime(value)
     
     @property
     def duration(self):
-        result = self.__duration_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        result = self.__duration_edt.time()
+        return result
     
     @duration.setter
     def duration(self, value):
-        self.__duration_edt.setText(value)
+        self.__duration_edt.setTime(value)
     
     @property
     def bprice(self):
         result = self.__bprice_edt.text().strip()
-        if result == '':
-            return '0.00'
-        else:
-            return result
+        if result and result.isdigit():
+            return int(result)
+        return None
     
     @bprice.setter
     def bprice(self, value):
-        self.__bprice_edt.setText(value)
+        self.__bprice_edt.setText(str(value))
     
     def get(self, data):
         data.planeid = self.id_plane
         data.departureairportid = self.id_dairport
         data.arrivalairportid = self.id_aairport
-        data.flighttime = self.ftime
-        data.duration = self.duration
+        data.flighttime = convert_to_datetime(self.ftime)
+        data.duration = convert_to_timedelta(self.duration)
         data.baseticketprice = self.bprice
     
     def put(self, data):
         self.id_plane = data.planeid
         self.id_dairport = data.departureairportid
         self.id_aairport = data.arrivalairportid
-        self.ftime = data.flighttime
-        self.duration = data.duration
+        self.ftime = convert_to_qdatetime(data.flighttime)
+        self.duration = QTime(0, 0).addSecs(int(data.duration.total_seconds()))
         self.bprice = data.baseticketprice

@@ -9,6 +9,8 @@ from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разм�
 
 from PyQt5.Qt import QApplication
 
+import db
+
 
 class Dialog(QDialog):
     
@@ -73,22 +75,18 @@ class Dialog(QDialog):
     @property
     def id_airline(self):
         result = self.__id_airline_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        if result and result.isdigit() and db.Airline(airlineid=int(result)).exist_key():
+            return int(result)
+        return None
     
     @id_airline.setter
     def id_airline(self, value):
-        self.__id_airline_edt.setText(value)
+        self.__id_airline_edt.setText(str(value))
     
     @property
     def pmodel(self):
         result = self.__pmodel_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        return result if result else None
     
     @pmodel.setter
     def pmodel(self, value):
@@ -97,14 +95,13 @@ class Dialog(QDialog):
     @property
     def capacity(self):
         result = self.__capacity_edt.text().strip()
-        if result == '':
-            return None
-        else:
-            return result
+        if result and result.isdigit():
+            return int(result)
+        return None
     
     @capacity.setter
     def capacity(self, value):
-        self.__capacity_edt.setText(value)
+        self.__capacity_edt.setText(str(value))
     
     def get(self, data):
         data.airlineid = self.id_airline
