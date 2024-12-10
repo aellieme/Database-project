@@ -45,9 +45,9 @@ CREATE TABLE Flight (
     PlaneID 			INT REFERENCES Plane(PlaneID) ON DELETE CASCADE, 
     DepartureAirportID 	INT REFERENCES Airport(AirportID) ON DELETE CASCADE, 
     ArrivalAirportID 	INT REFERENCES Airport(AirportID) ON DELETE CASCADE,   
-    FlightTime 			TIMESTAMP NOT NULL,                        -- вылет
-    Duration 			INTERVAL NOT NULL,                           -- время в пути
-    BaseTicketPrice 	DECIMAL(10, 2) NOT NULL               -- базовая стоимость билета
+    FlightTime 			TIMESTAMP NOT NULL,
+    Duration 			INTERVAL NOT NULL,
+    BaseTicketPrice 	INT NOT NULL
 );
 
 COMMENT ON TABLE Flight IS 'Сведения о рейсах';
@@ -67,7 +67,7 @@ CREATE TABLE Ticket (
     PassportNumber 	VARCHAR(10) NOT NULL,         
     SeatNumber 		VARCHAR(3) NOT NULL,                            
     Meal 			VARCHAR(3) CHECK (Meal IN ('YES', 'NO')),
-	Price 			DECIMAL(10, 2) DEFAULT 0.00
+	Price 			INT
 );
 
 COMMENT ON TABLE Ticket IS 'Сведения о билетах';
