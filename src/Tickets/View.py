@@ -41,7 +41,6 @@ class View(QTableView):
     
     @pyqtSlot()
     def update(self):
-        # @FIXME: При редактировании без выбора выдаёт ошибку
         dia = Dialog(parent=self)
         data = db.Ticket(ticketid=self.ticketid).load()
         dia.put(data)
@@ -52,7 +51,6 @@ class View(QTableView):
     
     @pyqtSlot()
     def delete(self):
-        # @FIXME: При удалении без выбора удаляется первый по списку
         ans = QMessageBox.question(self, 'Билет', 'Вы уверены?')
         if ans == QMessageBox.Yes:
             db.Ticket(ticketid=self.ticketid).delete()

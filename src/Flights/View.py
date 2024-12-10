@@ -40,7 +40,6 @@ class View(QTableView):
     
     @pyqtSlot()
     def update(self):
-        # @FIXME: При редактировании без выбора выдаёт ошибку
         dia = Dialog(parent=self)
         data = db.Flight(flightid=self.flightid).load()
         dia.put(data)
@@ -51,7 +50,6 @@ class View(QTableView):
     
     @pyqtSlot()
     def delete(self):
-        # @FIXME: При удалении без выбора удаляется первый по списку
         ans = QMessageBox.question(self, 'Рейс', 'Вы уверены?')
         if ans == QMessageBox.Yes:
             db.Flight(flightid=self.flightid).delete()

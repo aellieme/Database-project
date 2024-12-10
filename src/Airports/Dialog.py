@@ -10,13 +10,6 @@ from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разм�
 from PyQt5.Qt import QApplication
 
 
-SELECT_ONE = '''
-    SELECT AirportName, City
-    FROM Airport
-    WHERE AirportID = %s;
-'''
-
-
 class Dialog(QDialog):
     
     def __init__(self, parent=None):
