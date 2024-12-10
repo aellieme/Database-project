@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 import psycopg2
 import settings as st
+from pickle import TRUE
 
 
 INSERT = '''
@@ -48,12 +49,14 @@ class Airline(object):
         
     def insert(self):
         conn = psycopg2.connect(**st.db_params)
-        cursor = conn.cursor()
-        cursor.execute(INSERT, self.airline_data)
-        (self.airlineid, ) = next(cursor)
-        conn.commit()
-        conn.close()
-    
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(INSERT, self.airline_data)
+                    (self.airlineid, ) = next(cursor)
+        finally:
+            conn.close()
+
     def update(self):
         conn = psycopg2.connect(**st.db_params)
         try:
@@ -71,11 +74,14 @@ class Airline(object):
             
     def load(self):
         conn = psycopg2.connect(**st.db_params)
-        cursor = conn.cursor()
-        cursor.execute(SELECT_ONE, (self.airlineid, ))
-        (self.airlinename, self.iatacode) = next(cursor)
-        conn.commit()
-        conn.close()
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(SELECT_ONE, (self.airlineid, ))
+                    (self.airlinename, self.iatacode) = next(cursor)
+        finally:
+            conn.close()
+        
         return self
     
     def delete(self):
@@ -86,3 +92,15 @@ class Airline(object):
                     cursor.execute(DELETE, (self.airlineid, ))
         finally:
             conn.close()
+    
+    def exist_key(self) -> bool:
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(SELECT_ONE, (self.airlineid, ))
+                    result = cursor.fetchone()
+        finally:
+            conn.close()
+        
+        return result is not None

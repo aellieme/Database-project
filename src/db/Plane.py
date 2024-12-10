@@ -50,11 +50,13 @@ class Plane(object):
     
     def insert(self):
         conn = psycopg2.connect(**st.db_params)
-        cursor = conn.cursor()
-        cursor.execute(INSERT, self.plane_data)
-        (self.planeid, ) = next(cursor)
-        conn.commit()
-        conn.close()
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(INSERT, self.plane_data)
+                    (self.planeid, ) = next(cursor)
+        finally:
+            conn.close()
     
     def update(self):
         conn = psycopg2.connect(**st.db_params)
@@ -73,11 +75,14 @@ class Plane(object):
     
     def load(self):
         conn = psycopg2.connect(**st.db_params)
-        cursor = conn.cursor()
-        cursor.execute(SELECT_ONE, (self.planeid, ))
-        (self.airlineid, self.model, self.capacity) = next(cursor)
-        conn.commit()
-        conn.close()
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(SELECT_ONE, (self.planeid, ))
+                    (self.airlineid, self.model, self.capacity) = next(cursor)
+        finally:
+            conn.close()
+        
         return self
     
     def delete(self):
@@ -88,4 +93,16 @@ class Plane(object):
                     cursor.execute(DELETE, (self.planeid, ))
         finally:
             conn.close()
+    
+    def exist_key(self) -> bool:
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(SELECT_ONE, (self.planeid, ))
+                    result = cursor.fetchone()
+        finally:
+            conn.close()
+        
+        return result is not None
     

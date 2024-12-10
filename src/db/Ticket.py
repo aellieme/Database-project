@@ -55,11 +55,13 @@ class Ticket(object):
     
     def insert(self):
         conn = psycopg2.connect(**st.db_params)
-        cursor = conn.cursor()
-        cursor.execute(INSERT, self.ticket_data)
-        (self.ticketid, self.price) = next(cursor)
-        conn.commit()
-        conn.close()
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(INSERT, self.ticket_data)
+                    (self.ticketid, self.price) = next(cursor)
+        finally:
+            conn.close()
     
     def update(self):
         conn = psycopg2.connect(**st.db_params)
@@ -78,12 +80,15 @@ class Ticket(object):
     
     def load(self):
         conn = psycopg2.connect(**st.db_params)
-        cursor = conn.cursor()
-        cursor.execute(SELECT_ONE, (self.ticketid, ))
-        (self.flightid, self.fullname, self.passportnumber, 
-         self.seatnumber, self.meal, self.price) = next(cursor)
-        conn.commit()
-        conn.close()
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(SELECT_ONE, (self.ticketid, ))
+                    (self.flightid, self.fullname, self.passportnumber, 
+                     self.seatnumber, self.meal, self.price) = next(cursor)
+        finally:
+            conn.close()
+
         return self
     
     def delete(self):
@@ -94,3 +99,15 @@ class Ticket(object):
                     cursor.execute(DELETE, (self.ticketid, ))
         finally:
             conn.close()
+    
+    def exist_key(self) -> bool:
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(SELECT_ONE, (self.ticketid, ))
+                    result = cursor.fetchone()
+        finally:
+            conn.close()
+        
+        return result is not None
