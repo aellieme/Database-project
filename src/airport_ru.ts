@@ -30,16 +30,34 @@
     </message>
 </context>
 <context>
+    <name>Airline.View</name>
+    <message>
+        <location filename="Airlines/View.py" line="17"/>
+        <source>Airline Name</source>
+        <translation>Название авиакомпании</translation>
+    </message>
+    <message>
+        <location filename="Airlines/View.py" line="19"/>
+        <source>IATA Code</source>
+        <translation>ИАТА код</translation>
+    </message>
+</context>
+<context>
     <name>Airlines.View</name>
     <message>
-        <location filename="Airlines/View.py" line="62"/>
+        <location filename="Airlines/View.py" line="68"/>
         <source>Airline</source>
         <translation>Авиакомпания</translation>
     </message>
     <message>
-        <location filename="Airlines/View.py" line="63"/>
+        <location filename="Airlines/View.py" line="69"/>
         <source>Are you sure?</source>
         <translation>Вы уверены?</translation>
+    </message>
+    <message>
+        <location filename="Airlines/View.py" line="15"/>
+        <source>ID</source>
+        <translation>ID</translation>
     </message>
 </context>
 <context>
@@ -71,16 +89,34 @@
     </message>
 </context>
 <context>
+    <name>Airport.View</name>
+    <message>
+        <location filename="Airports/View.py" line="17"/>
+        <source>Airport Name</source>
+        <translation>Название аэропорта</translation>
+    </message>
+    <message>
+        <location filename="Airports/View.py" line="19"/>
+        <source>City</source>
+        <translation>Город</translation>
+    </message>
+</context>
+<context>
     <name>Airports.View</name>
     <message>
-        <location filename="Airports/View.py" line="62"/>
+        <location filename="Airports/View.py" line="68"/>
         <source>Airport</source>
         <translation>Аэропорт</translation>
     </message>
     <message>
-        <location filename="Airports/View.py" line="63"/>
+        <location filename="Airports/View.py" line="69"/>
         <source>Are you sure?</source>
         <translation>Вы уверены?</translation>
+    </message>
+    <message>
+        <location filename="Airports/View.py" line="15"/>
+        <source>ID</source>
+        <translation>ID</translation>
     </message>
 </context>
 <context>
@@ -132,22 +168,60 @@
     </message>
 </context>
 <context>
+    <name>Flight.View</name>
+    <message>
+        <location filename="Flights/View.py" line="17"/>
+        <source>Plane ID</source>
+        <translation>ID самолета</translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="19"/>
+        <source>Departure Airport ID</source>
+        <translation>ID аэропорта отправления</translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="21"/>
+        <source>Arrival Airport ID</source>
+        <translation>ID аэропорта прилета</translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="23"/>
+        <source>Departure date and time</source>
+        <translation>Дата и время вылета</translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="25"/>
+        <source>Flight duration</source>
+        <translation>Время полета</translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="27"/>
+        <source>Base Ticket Price</source>
+        <translation>Базовая стоимость билета</translation>
+    </message>
+</context>
+<context>
     <name>Flights.View</name>
     <message>
-        <location filename="Flights/View.py" line="62"/>
+        <location filename="Flights/View.py" line="76"/>
         <source>Flight</source>
         <translation>Рейс</translation>
     </message>
     <message>
-        <location filename="Flights/View.py" line="63"/>
+        <location filename="Flights/View.py" line="77"/>
         <source>Are you sure?</source>
         <translation>Вы уверены?</translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="15"/>
+        <source>ID</source>
+        <translation>ID</translation>
     </message>
 </context>
 <context>
     <name>Main Window</name>
     <message>
-        <location filename="MainWindow.py" line="35"/>
+        <location filename="MainWindow.py" line="62"/>
         <source>Database Management</source>
         <translation>Управление базой данных</translation>
     </message>
@@ -349,7 +423,7 @@
 <context>
     <name>MainWindow.Help</name>
     <message>
-        <location filename="MainWindow.py" line="28"/>
+        <location filename="MainWindow.py" line="55"/>
         <source>Program for creating, deleting, managing
 and editing an AIRPORT database</source>
         <translation>Программа для создания, удаления, управления
@@ -390,16 +464,39 @@ and editing an AIRPORT database</source>
     </message>
 </context>
 <context>
+    <name>Plane.View</name>
+    <message>
+        <location filename="Planes/View.py" line="17"/>
+        <source>Airline ID</source>
+        <translation>ID авиакомпании</translation>
+    </message>
+    <message>
+        <location filename="Planes/View.py" line="19"/>
+        <source>Plane model</source>
+        <translation>Модель самолета</translation>
+    </message>
+    <message>
+        <location filename="Planes/View.py" line="21"/>
+        <source>Capacity</source>
+        <translation>Вместимость</translation>
+    </message>
+</context>
+<context>
     <name>Planes.View</name>
     <message>
-        <location filename="Planes/View.py" line="62"/>
+        <location filename="Planes/View.py" line="70"/>
         <source>Plane</source>
         <translation>Самолет</translation>
     </message>
     <message>
-        <location filename="Planes/View.py" line="63"/>
+        <location filename="Planes/View.py" line="71"/>
         <source>Are you sure?</source>
         <translation>Вы уверены?</translation>
+    </message>
+    <message>
+        <location filename="Planes/View.py" line="15"/>
+        <source>ID</source>
+        <translation>ID</translation>
     </message>
 </context>
 <context>
@@ -446,16 +543,54 @@ and editing an AIRPORT database</source>
     </message>
 </context>
 <context>
+    <name>Ticket.View</name>
+    <message>
+        <location filename="Tickets/View.py" line="17"/>
+        <source>Flight ID</source>
+        <translation>ID рейса</translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="19"/>
+        <source>Passenger full name</source>
+        <translation>ФИО пассажира</translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="21"/>
+        <source>Passport series and number</source>
+        <translation>Серия и номер паспорта</translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="23"/>
+        <source>Seat number</source>
+        <translation>Номер места</translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="25"/>
+        <source>Lunch on board</source>
+        <translation>Обед на борту</translation>
+    </message>
+</context>
+<context>
     <name>Tickets.View</name>
     <message>
-        <location filename="Tickets/View.py" line="63"/>
+        <location filename="Tickets/View.py" line="77"/>
         <source>Ticket</source>
         <translation>Билет</translation>
     </message>
     <message>
-        <location filename="Tickets/View.py" line="64"/>
+        <location filename="Tickets/View.py" line="78"/>
         <source>Are you sure?</source>
         <translation>Вы уверены?</translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="15"/>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="27"/>
+        <source>Price</source>
+        <translation>Стоимость билета</translation>
     </message>
 </context>
 </TS>

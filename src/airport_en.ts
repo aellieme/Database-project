@@ -30,15 +30,33 @@
     </message>
 </context>
 <context>
+    <name>Airline.View</name>
+    <message>
+        <location filename="Airlines/View.py" line="17"/>
+        <source>Airline Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Airlines/View.py" line="19"/>
+        <source>IATA Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Airlines.View</name>
     <message>
-        <location filename="Airlines/View.py" line="62"/>
+        <location filename="Airlines/View.py" line="68"/>
         <source>Airline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Airlines/View.py" line="63"/>
+        <location filename="Airlines/View.py" line="69"/>
         <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Airlines/View.py" line="15"/>
+        <source>ID</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -71,15 +89,33 @@
     </message>
 </context>
 <context>
+    <name>Airport.View</name>
+    <message>
+        <location filename="Airports/View.py" line="17"/>
+        <source>Airport Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Airports/View.py" line="19"/>
+        <source>City</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Airports.View</name>
     <message>
-        <location filename="Airports/View.py" line="62"/>
+        <location filename="Airports/View.py" line="68"/>
         <source>Airport</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Airports/View.py" line="63"/>
+        <location filename="Airports/View.py" line="69"/>
         <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Airports/View.py" line="15"/>
+        <source>ID</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -132,22 +168,60 @@
     </message>
 </context>
 <context>
+    <name>Flight.View</name>
+    <message>
+        <location filename="Flights/View.py" line="17"/>
+        <source>Plane ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="19"/>
+        <source>Departure Airport ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="21"/>
+        <source>Arrival Airport ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="23"/>
+        <source>Departure date and time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="25"/>
+        <source>Flight duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="27"/>
+        <source>Base Ticket Price</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Flights.View</name>
     <message>
-        <location filename="Flights/View.py" line="62"/>
+        <location filename="Flights/View.py" line="76"/>
         <source>Flight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Flights/View.py" line="63"/>
+        <location filename="Flights/View.py" line="77"/>
         <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="15"/>
+        <source>ID</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Main Window</name>
     <message>
-        <location filename="MainWindow.py" line="35"/>
+        <location filename="MainWindow.py" line="62"/>
         <source>Database Management</source>
         <translation type="unfinished"></translation>
     </message>
@@ -349,7 +423,7 @@
 <context>
     <name>MainWindow.Help</name>
     <message>
-        <location filename="MainWindow.py" line="28"/>
+        <location filename="MainWindow.py" line="55"/>
         <source>Program for creating, deleting, managing
 and editing an AIRPORT database</source>
         <translation type="unfinished"></translation>
@@ -389,15 +463,38 @@ and editing an AIRPORT database</source>
     </message>
 </context>
 <context>
+    <name>Plane.View</name>
+    <message>
+        <location filename="Planes/View.py" line="17"/>
+        <source>Airline ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Planes/View.py" line="19"/>
+        <source>Plane model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Planes/View.py" line="21"/>
+        <source>Capacity</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Planes.View</name>
     <message>
-        <location filename="Planes/View.py" line="62"/>
+        <location filename="Planes/View.py" line="70"/>
         <source>Plane</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Planes/View.py" line="63"/>
+        <location filename="Planes/View.py" line="71"/>
         <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Planes/View.py" line="15"/>
+        <source>ID</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -445,15 +542,53 @@ and editing an AIRPORT database</source>
     </message>
 </context>
 <context>
+    <name>Ticket.View</name>
+    <message>
+        <location filename="Tickets/View.py" line="17"/>
+        <source>Flight ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="19"/>
+        <source>Passenger full name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="21"/>
+        <source>Passport series and number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="23"/>
+        <source>Seat number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="25"/>
+        <source>Lunch on board</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Tickets.View</name>
     <message>
-        <location filename="Tickets/View.py" line="63"/>
+        <location filename="Tickets/View.py" line="77"/>
         <source>Ticket</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Tickets/View.py" line="64"/>
+        <location filename="Tickets/View.py" line="78"/>
         <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="15"/>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="27"/>
+        <source>Price</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
