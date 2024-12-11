@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QTableView, QMessageBox, QApplication
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, Qt
 import db
 
 from .Model import Model
@@ -12,6 +12,20 @@ class View(QTableView):
         super().__init__(parent)
         
         model = Model(parent=self)
+        title = QApplication.translate('Tickets.View', 'ID')
+        model.setHeaderData(0, Qt.Horizontal, title)
+        title = QApplication.translate('Ticket.View', 'Flight ID')
+        model.setHeaderData(1, Qt.Horizontal, title)
+        title = QApplication.translate('Ticket.View', 'Passenger full name')
+        model.setHeaderData(2, Qt.Horizontal, title)
+        title = QApplication.translate('Ticket.View', 'Passport series and number')
+        model.setHeaderData(3, Qt.Horizontal, title)
+        title = QApplication.translate('Ticket.View', 'Seat number')
+        model.setHeaderData(4, Qt.Horizontal, title)
+        title = QApplication.translate('Ticket.View', 'Lunch on board')
+        model.setHeaderData(5, Qt.Horizontal, title)
+        title = QApplication.translate('Tickets.View', 'Price')
+        model.setHeaderData(6, Qt.Horizontal, title)
         self.setModel(model)
         
         self.setSelectionBehavior(self.SelectRows)
