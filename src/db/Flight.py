@@ -37,6 +37,11 @@ DELETE = '''
 '''
 
 
+TRUNCATE = '''
+    TRUNCATE TABLE Flight CASCADE;
+'''
+
+
 @dataclass
 class Flight(object):
     
@@ -102,6 +107,15 @@ class Flight(object):
             with conn:
                 with conn.cursor() as cursor:
                     cursor.execute(DELETE, (self.flightid, ))
+        finally:
+            conn.close()
+    
+    def truncate(self):
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(TRUNCATE)
         finally:
             conn.close()
     

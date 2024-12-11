@@ -32,6 +32,11 @@ DELETE = '''
 '''
 
 
+TRUNCATE = '''
+    TRUNCATE TABLE Plane CASCADE;
+'''
+
+
 @dataclass
 class Plane(object):
     
@@ -84,6 +89,15 @@ class Plane(object):
             conn.close()
         
         return self
+    
+    def truncate(self):
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(TRUNCATE)
+        finally:
+            conn.close()
     
     def delete(self):
         conn = psycopg2.connect(**st.db_params)

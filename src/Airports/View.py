@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QTableView, QMessageBox
+from PyQt5.QtWidgets import QTableView, QMessageBox, QApplication
 from PyQt5.QtCore import pyqtSlot
 import db
 
@@ -50,7 +50,18 @@ class View(QTableView):
     
     @pyqtSlot()
     def delete(self):
-        ans = QMessageBox.question(self, 'Аэропорт', 'Вы уверены?')
+        title = QApplication.translate('Airports.View', 'Airport')
+        q = QApplication.translate('Airports.View', 'Are you sure?')
+        ans = QMessageBox.question(self, title, q)
         if ans == QMessageBox.Yes:
             db.Airport(airportid=self.airportid).delete()
+            self.model().fresh()
+    
+    @pyqtSlot()
+    def truncate(self):
+        title = QApplication.translate('Airports.View', 'Airport')
+        q = QApplication.translate('Airports.View', 'Are you sure?')
+        ans = QMessageBox.question(self, title, q)
+        if ans == QMessageBox.Yes:
+            db.Airport().truncate()
             self.model().fresh()
