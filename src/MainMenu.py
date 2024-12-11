@@ -228,7 +228,7 @@ class MainMenu(QMenuBar):
         self.__add_flight.setEnabled(True)
         self.__edit_flight.setEnabled(True)
         self.__delete_flight.setEnabled(True)
-        self.__truncate_flight.setEnabled(True)
+        self.__clear_flight.setEnabled(True)
         self.__flight_menu_action.setEnabled(True)
         self.__flight_menu_action.setVisible(True)
     
