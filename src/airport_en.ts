@@ -30,78 +30,117 @@
     </message>
 </context>
 <context>
+    <name>Airlines.View</name>
+    <message>
+        <location filename="Airlines/View.py" line="62"/>
+        <source>Airline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Airlines/View.py" line="63"/>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Airport.Dialog</name>
     <message>
-        <location filename="Airports/Dialog.py" line="25"/>
+        <location filename="Airports/Dialog.py" line="18"/>
         <source>Airport</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Airports/Dialog.py" line="28"/>
+        <location filename="Airports/Dialog.py" line="21"/>
         <source>Airport Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Airports/Dialog.py" line="32"/>
+        <location filename="Airports/Dialog.py" line="25"/>
         <source>City</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Airports/Dialog.py" line="36"/>
+        <location filename="Airports/Dialog.py" line="29"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Airports/Dialog.py" line="38"/>
+        <location filename="Airports/Dialog.py" line="31"/>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Airports.View</name>
+    <message>
+        <location filename="Airports/View.py" line="62"/>
+        <source>Airport</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Airports/View.py" line="63"/>
+        <source>Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Flight.Dialog</name>
     <message>
-        <location filename="Flights/Dialog.py" line="18"/>
+        <location filename="Flights/Dialog.py" line="43"/>
         <source>Flight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Flights/Dialog.py" line="21"/>
+        <location filename="Flights/Dialog.py" line="46"/>
         <source>Plane ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Flights/Dialog.py" line="25"/>
+        <location filename="Flights/Dialog.py" line="50"/>
         <source>Departure Airport ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Flights/Dialog.py" line="29"/>
+        <location filename="Flights/Dialog.py" line="54"/>
         <source>Arrival Airport ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Flights/Dialog.py" line="33"/>
+        <location filename="Flights/Dialog.py" line="58"/>
         <source>Departure date and time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Flights/Dialog.py" line="37"/>
+        <location filename="Flights/Dialog.py" line="64"/>
         <source>Flight duration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Flights/Dialog.py" line="41"/>
+        <location filename="Flights/Dialog.py" line="68"/>
         <source>Base Ticket Price</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Flights/Dialog.py" line="45"/>
+        <location filename="Flights/Dialog.py" line="72"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Flights/Dialog.py" line="47"/>
+        <location filename="Flights/Dialog.py" line="74"/>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Flights.View</name>
+    <message>
+        <location filename="Flights/View.py" line="62"/>
+        <source>Flight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Flights/View.py" line="63"/>
+        <source>Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -121,32 +160,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="26"/>
+        <location filename="MainMenu.py" line="28"/>
         <source>Airport</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="36"/>
+        <location filename="MainMenu.py" line="40"/>
         <source>Flight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="46"/>
+        <location filename="MainMenu.py" line="52"/>
         <source>Plane</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="56"/>
+        <location filename="MainMenu.py" line="64"/>
         <source>Ticket</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="66"/>
+        <location filename="MainMenu.py" line="76"/>
         <source>Modes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="100"/>
+        <location filename="MainMenu.py" line="110"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
@@ -168,52 +207,67 @@
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="MainMenu.py" line="25"/>
+        <source>Clear table</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainMenu.Airport</name>
     <message>
-        <location filename="MainMenu.py" line="29"/>
+        <location filename="MainMenu.py" line="31"/>
         <source>Add...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="31"/>
+        <location filename="MainMenu.py" line="33"/>
         <source>Edit...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="33"/>
+        <location filename="MainMenu.py" line="35"/>
         <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MainMenu.py" line="37"/>
+        <source>Clear table</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainMenu.Flight</name>
     <message>
-        <location filename="MainMenu.py" line="39"/>
+        <location filename="MainMenu.py" line="43"/>
         <source>Add...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="41"/>
+        <location filename="MainMenu.py" line="45"/>
         <source>Edit...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="43"/>
+        <location filename="MainMenu.py" line="47"/>
         <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MainMenu.py" line="49"/>
+        <source>Clear table</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainMenu.Help</name>
     <message>
-        <location filename="MainMenu.py" line="102"/>
+        <location filename="MainMenu.py" line="112"/>
         <source>About...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="104"/>
+        <location filename="MainMenu.py" line="114"/>
         <source>About Qt...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -221,27 +275,27 @@
 <context>
     <name>MainMenu.Modes</name>
     <message>
-        <location filename="MainMenu.py" line="70"/>
+        <location filename="MainMenu.py" line="80"/>
         <source>Airlines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="76"/>
+        <location filename="MainMenu.py" line="86"/>
         <source>Airports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="82"/>
+        <location filename="MainMenu.py" line="92"/>
         <source>Flights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="88"/>
+        <location filename="MainMenu.py" line="98"/>
         <source>Planes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="94"/>
+        <location filename="MainMenu.py" line="104"/>
         <source>Tickets</source>
         <translation type="unfinished"></translation>
     </message>
@@ -249,36 +303,46 @@
 <context>
     <name>MainMenu.Plane</name>
     <message>
-        <location filename="MainMenu.py" line="49"/>
+        <location filename="MainMenu.py" line="55"/>
         <source>Add...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="51"/>
+        <location filename="MainMenu.py" line="57"/>
         <source>Edit...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="53"/>
+        <location filename="MainMenu.py" line="59"/>
         <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MainMenu.py" line="61"/>
+        <source>Clear table</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainMenu.Ticket</name>
     <message>
-        <location filename="MainMenu.py" line="59"/>
+        <location filename="MainMenu.py" line="67"/>
         <source>Add...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="61"/>
+        <location filename="MainMenu.py" line="69"/>
         <source>Edit...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.py" line="63"/>
+        <location filename="MainMenu.py" line="71"/>
         <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MainMenu.py" line="73"/>
+        <source>Clear table</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -294,76 +358,102 @@ and editing an AIRPORT database</source>
 <context>
     <name>Plane.Dialog</name>
     <message>
-        <location filename="Planes/Dialog.py" line="18"/>
+        <location filename="Planes/Dialog.py" line="20"/>
         <source>Plane</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Planes/Dialog.py" line="21"/>
+        <location filename="Planes/Dialog.py" line="23"/>
         <source>Airline ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Planes/Dialog.py" line="25"/>
+        <location filename="Planes/Dialog.py" line="27"/>
         <source>Plane model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Planes/Dialog.py" line="29"/>
+        <location filename="Planes/Dialog.py" line="31"/>
         <source>Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Planes/Dialog.py" line="33"/>
+        <location filename="Planes/Dialog.py" line="35"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Planes/Dialog.py" line="35"/>
+        <location filename="Planes/Dialog.py" line="37"/>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Planes.View</name>
+    <message>
+        <location filename="Planes/View.py" line="62"/>
+        <source>Plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Planes/View.py" line="63"/>
+        <source>Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Ticket.Dialog</name>
     <message>
-        <location filename="Tickets/Dialog.py" line="18"/>
+        <location filename="Tickets/Dialog.py" line="21"/>
         <source>Ticket</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Tickets/Dialog.py" line="21"/>
+        <location filename="Tickets/Dialog.py" line="24"/>
         <source>Flight ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Tickets/Dialog.py" line="25"/>
+        <location filename="Tickets/Dialog.py" line="28"/>
         <source>Passenger full name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Tickets/Dialog.py" line="29"/>
+        <location filename="Tickets/Dialog.py" line="32"/>
         <source>Passport series and number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Tickets/Dialog.py" line="33"/>
+        <location filename="Tickets/Dialog.py" line="36"/>
         <source>Seat number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Tickets/Dialog.py" line="37"/>
+        <location filename="Tickets/Dialog.py" line="40"/>
         <source>Lunch on board</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Tickets/Dialog.py" line="41"/>
+        <location filename="Tickets/Dialog.py" line="45"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Tickets/Dialog.py" line="43"/>
+        <location filename="Tickets/Dialog.py" line="47"/>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Tickets.View</name>
+    <message>
+        <location filename="Tickets/View.py" line="63"/>
+        <source>Ticket</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Tickets/View.py" line="64"/>
+        <source>Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
