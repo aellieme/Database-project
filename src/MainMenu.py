@@ -13,6 +13,11 @@ class MainMenu(QMenuBar):
     def __init__(self, parent=None):
         super().__init__(parent)
         
+        self.setMinimumHeight(30)
+        font = self.font()
+        font.setPointSize(15)
+        self.setFont(font)
+        
         title = QApplication.translate('MainMenu', 'Airline')
         airline_menu = self.addMenu(title)
         self.__airline_menu_action = airline_menu.menuAction()
