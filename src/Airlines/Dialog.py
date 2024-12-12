@@ -56,7 +56,7 @@ class Dialog(QDialog):
     
     @pyqtSlot()
     def finish(self):
-        if self.name is None or self.code is None:
+        if self.name is None or self.code is None or len(self.code) > 3:
             return 
         self.accept()
     

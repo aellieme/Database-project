@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):
         text = QApplication.translate('MainWindow.Help',
                                       'Program for creating, deleting, managing\n'
                                       'and editing an AIRPORT database')
-        QMessageBox.about(self, title, text)
+        QMessageBox().about(self, title, text)
     
     @pyqtSlot()
     def about_qt(self):

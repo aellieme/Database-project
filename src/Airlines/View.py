@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QTableView, QMessageBox, QApplication
 from PyQt5.QtCore import pyqtSlot, Qt
+from PyQt5.QtGui import QFont
 import db
 
 from .Model import Model
@@ -20,6 +21,10 @@ class View(QTableView):
         model.setHeaderData(2, Qt.Horizontal, title)
         self.setModel(model)
         
+        font = QFont()
+        font.setPointSize(20)
+        self.setFont(font)
+        self.horizontalHeader().setStyleSheet("QHeaderView { font-size: 20pt; }")        
         self.setSelectionBehavior(self.SelectRows)
         self.setSelectionMode(self.SingleSelection)
         self.setWordWrap(False)
