@@ -1,17 +1,9 @@
-from PyQt5.QtWidgets import QMainWindow, QMessageBox, QApplication, QLabel, QVBoxLayout, QWidget
-from PyQt5.QtGui import QFont
-from PyQt5.QtCore import pyqtSlot, Qt
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QApplication
+from PyQt5.QtCore import pyqtSlot
+
+from Welcome import Welcome
 from MainMenu import MainMenu
 import Airlines, Airports, Flights, Planes, Tickets
-
-
-TEXT = '''
-ХИХИК
-
-ЭЛЯ ЖДУ...
-
-ХИХИК
-'''
 
 
 class MainWindow(QMainWindow):
@@ -22,22 +14,8 @@ class MainWindow(QMainWindow):
         main_menu = MainMenu(parent=self)
         self.setMenuBar(main_menu)
         
-        # Начальное сообщение на главном окне
-        font = QFont()
-        font.setPointSize(24)
-        font.setBold(True)
-        
-        lbl = QLabel(TEXT)
-        lbl.setFont(font)
-        lbl.setAlignment(Qt.AlignCenter)
-        
-        lay = QVBoxLayout()
-        lay.addWidget(lbl)
-        lay.setAlignment(Qt.AlignCenter)
-        
-        widget = QWidget()
-        widget.setLayout(lay)
-        self.setCentralWidget(widget)
+        v = Welcome()
+        self.setCentralWidget(v)
         
         main_menu.about.triggered.connect(self.about)
         main_menu.about_qt.triggered.connect(self.about_qt)
