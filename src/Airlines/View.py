@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QTableView, QMessageBox, QApplication, QSizePolicy
+from PyQt5.QtWidgets import QTableView, QMessageBox, QApplication
 from PyQt5.QtCore import pyqtSlot, Qt
 import db
 
