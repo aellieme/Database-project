@@ -178,7 +178,8 @@ RETURNS TABLE(
 BEGIN
 	RETURN QUERY 
 	SELECT airportid, airportname, city 
-	FROM airport;
+	FROM airport
+	ORDER BY airportid;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -240,7 +241,8 @@ RETURNS TABLE(
 BEGIN
 	RETURN QUERY 
 	SELECT airlineid, airlinename, iatacode
-	FROM airline;
+	FROM airline
+	ORDER BY airlineid;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -287,7 +289,8 @@ RETURNS TABLE(
 BEGIN
 	RETURN QUERY 
 	SELECT planeid, airlineid, model, capacity
-	FROM plane;
+	FROM plane
+	ORDER BY planeid;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -339,7 +342,8 @@ RETURNS TABLE(
 BEGIN
 	RETURN QUERY 
 	SELECT flightid, planeid, departureairportid, arrivalairportid, flighttime, duration, baseticketprice
-	FROM flight;
+	FROM flight
+	ORDER BY flightid;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -397,7 +401,8 @@ RETURNS TABLE(
 BEGIN
 	RETURN QUERY 
 	SELECT ticketid, flightid, fullname, passportnumber, seatnumber, meal, price
-	FROM ticket;
+	FROM ticket
+	ORDER BY ticketid;;
 END;
 $$ LANGUAGE plpgsql;
 
