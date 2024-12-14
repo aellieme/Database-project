@@ -107,6 +107,24 @@ COMMENT ON FUNCTION calculate_price IS 'Функция подсчета итог
 
 /*----------------------------------------------------------------------------------------------------------*/
 
+CREATE OR REPLACE FUNCTION update_ticket_price()
+RETURNS TRIGGER AS $$
+BEGIN
+  UPDATE ticket
+  SET price = (
+    SELECT baseticketprice
+    FROM flight
+    WHERE flightid = OLD.flightid
+  )
+  WHERE flightid = OLD.flightid;
+  RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+COMMENT ON FUNCTION update_ticket_price IS 'Функция меняющая итоговую стоимость билета при обновлении базовой';
+
+/*----------------------------------------------------------------------------------------------------------*/
+
 CREATE OR REPLACE FUNCTION can_register_passenger(flight_id INT)
 RETURNS BOOLEAN AS
 $$
@@ -139,6 +157,15 @@ FOR EACH ROW
 EXECUTE FUNCTION calculate_price();
 
 COMMENT ON TRIGGER update_price ON ticket IS 'Триггер на таблицу со сведениями о билетах с применением функции подсчета итоговой стоимости билета';
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+CREATE TRIGGER update_price_on_flight_update
+AFTER UPDATE ON flight
+FOR EACH ROW
+EXECUTE FUNCTION update_ticket_price();
+
+COMMENT ON TRIGGER update_price_on_flight_update ON ticket IS 'Триггер на таблицу со сведениями о рейсах с применением функции обновления итоговой стоимости билета';
 
 /*----------------------------------------------------------------------------------------------------------*/
 

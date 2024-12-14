@@ -23,9 +23,11 @@ DROP FUNCTION 	IF EXISTS airport_insert;
 DROP FUNCTION 	IF EXISTS airport_select_one;
 DROP FUNCTION 	IF EXISTS airport_select;
 
-DROP TRIGGER 	IF EXISTS update_price ON ticket;
+DROP TRIGGER 	IF EXISTS update_price_on_flight_update ON flight;
+DROP TRIGGER 	IF EXISTS update_price 					ON ticket;
 
 DROP FUNCTION 	IF EXISTS can_register_passenger;
+DROP FUNCTION 	IF EXISTS update_ticket_price;
 DROP FUNCTION 	IF EXISTS calculate_price;
 
 DROP TABLE 		IF EXISTS ticket;
