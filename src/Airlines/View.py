@@ -24,16 +24,19 @@ class View(QTableView):
         font = QFont()
         font.setPointSize(20)
         self.setFont(font)
-        self.horizontalHeader().setStyleSheet("QHeaderView { font-size: 20pt; }")        
+             
         self.setSelectionBehavior(self.SelectRows)
         self.setSelectionMode(self.SingleSelection)
         self.setWordWrap(False)
         
         vh = self.verticalHeader()
         vh.setSectionResizeMode(vh.Fixed)
+        vh.setVisible(False)
+        self.setVerticalHeader(vh)
         
         hh = self.horizontalHeader()
         hh.setSectionResizeMode(hh.ResizeToContents)
+        hh.setStyleSheet("QHeaderView { font-size: 20pt; }") 
     
     @property
     def airlineid(self):

@@ -9,8 +9,22 @@ from PyQt5.QtWidgets import QVBoxLayout # вертикальная размет�
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
 
 from PyQt5.Qt import QApplication
+import psycopg2
+import settings as st
 
 import db
+from .constraints import constraint_check
+
+
+CAN_REGISTER = '''
+    SELECT can_register_passenger(%s);
+'''
+
+
+def is_seat(string: str) -> bool:
+    if len(string) in (2, 3):
+        return string[:-1].isdigit() and string[-1] in ('A', 'B', 'C', 'D', 'F', 'G')
+    return False
 
 
 class Dialog(QDialog):
@@ -90,9 +104,20 @@ class Dialog(QDialog):
     
     @pyqtSlot()
     def finish(self):
-        print(self.meal)
-        if self.id_flight is None or self.name is None or self.passport is None or self.seat is None:
-            return 
+        conn = psycopg2.connect(**st.db_params)
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    if self.id_flight is not None:
+                        cursor.execute(CAN_REGISTER, (self.id_flight, ))
+                        if next(cursor):
+                            if not constraint_check(
+                                ('FlightID', 'FullName', 'PassportNumber', 'SeatNumber'),
+                                (self.id_flight, self.name, len(self.passport), len(self.seat))
+                                ):
+                                return 
+        finally:
+            conn.close()
         self.accept()
     
     @property
@@ -118,7 +143,9 @@ class Dialog(QDialog):
     @property
     def passport(self):
         result = self.__passport_edt.text().strip()
-        return result if result else None
+        if result and result.isdigit():
+            return result
+        return None
     
     @passport.setter
     def passport(self, value):
@@ -127,7 +154,9 @@ class Dialog(QDialog):
     @property
     def seat(self):
         result = self.__seat_edt.text().strip()
-        return result if result else None
+        if result and is_seat(result):
+            return result
+        return None
     
     @seat.setter
     def seat(self, value):
@@ -140,7 +169,6 @@ class Dialog(QDialog):
     
     @meal.setter
     def meal(self, value):
-        print(value)
         if value == 'YES':
             self.__meal_edt.setItemText(0, 'YES')
             self.__meal_edt.setItemText(1, 'NO')

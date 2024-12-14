@@ -10,6 +10,7 @@ from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разм�
 from PyQt5.Qt import QApplication
 
 import db
+from .constraints import constraint_check
 
 
 class Dialog(QDialog):
@@ -68,7 +69,10 @@ class Dialog(QDialog):
     
     @pyqtSlot()
     def finish(self):
-        if self.id_airline is None or self.pmodel is None or self.capacity is None:
+        if not constraint_check(
+            ('AirlineID', 'Model', 'Capacity'), 
+            (self.id_airline, self.pmodel, self.capacity)
+            ):
             return 
         self.accept()
     

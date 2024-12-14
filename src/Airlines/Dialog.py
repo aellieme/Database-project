@@ -9,6 +9,8 @@ from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разм�
 
 from PyQt5.Qt import QApplication
 
+from .constraints import constraint_check
+
 
 class Dialog(QDialog):
     
@@ -56,7 +58,10 @@ class Dialog(QDialog):
     
     @pyqtSlot()
     def finish(self):
-        if self.name is None or self.code is None or len(self.code) > 3:
+        if not constraint_check(
+            ('AirlineName', 'IATACode'),
+            (self.name, len(self.code))
+            ):
             return 
         self.accept()
     
@@ -72,7 +77,7 @@ class Dialog(QDialog):
     @property
     def code(self):
         result = self.__code_edt.text().strip()
-        return result if result else None
+        return result if result else ''
     
     @code.setter
     def code(self, value):

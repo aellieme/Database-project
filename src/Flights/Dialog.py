@@ -12,16 +12,10 @@ from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разм�
 from PyQt5.Qt import QApplication
 
 import db
+from .constraints import constraint_check
 
 from datetime import datetime, timedelta
 
-
-def is_numeric(string: str) -> bool:
-    try:
-        float(string)
-        return True
-    except ValueError:
-        return False
 
 def convert_to_datetime(qdatetime: QDateTime) -> datetime:
     return datetime(qdatetime.date().year(), qdatetime.date().month(), qdatetime.date().day(), qdatetime.time().hour(), qdatetime.time().minute())
@@ -123,7 +117,10 @@ class Dialog(QDialog):
     
     @pyqtSlot()
     def finish(self):
-        if self.id_plane is None or self.id_dairport is None or self.id_aairport is None or self.bprice is None:
+        if not constraint_check(
+            ('PlaneID', 'DepartureAirportID', 'ArrivalAirportID', 'FlightTime', 'Duration', 'BaseTicketPrice'),
+            (self.id_plane, self.id_dairport, self.id_aairport, self.ftime, self.duration, self.bprice)
+            ):
             return 
         self.accept()
     
