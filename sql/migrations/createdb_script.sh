@@ -2,8 +2,6 @@
 export PGPASSWORD="1234"
 
 DB_NAME="airport"
-DB_USER="user"
-DB_PASS="1234"
 
 test=$(psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;")
 echo $test
