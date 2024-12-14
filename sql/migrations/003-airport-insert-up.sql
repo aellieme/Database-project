@@ -2,34 +2,34 @@ START TRANSACTION;
 
 /*----------------------------------------------------------------------------------------------------------*/
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Аэропорт имени Б. Н. Кустодиева', 'Астрахань' );
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Кневичи', 'Владивосток' );
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Северный', 'Грозный' );
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Жуковский', 'Москва' );
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Аэропорт имени Габдуллы Тукая', 'Казань' );
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Внуково', 'Москва' );
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Домодедово', 'Москва' );
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Шереметьево', 'Москва' );
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Стригино', 'Нижний Новгород' );
 
-INSERT INTO Airport ( AirportName, City )
+INSERT INTO airport ( airportname, city )
 VALUES ( 'Адлер', 'Сочи' );
 
 /*----------------------------------------------------------------------------------------------------------*/

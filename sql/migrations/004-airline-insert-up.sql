@@ -2,34 +2,34 @@ START TRANSACTION;
 
 /*----------------------------------------------------------------------------------------------------------*/
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'Аэрофлот', 'SU' );
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'S7 Airlines', 'S7' );
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'Победа', 'DP' );
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'Azur Air', 'ZF' );
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'Россия', 'FV' );
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'Smartavia', '5N' );
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'Red Wings', 'WZ' );
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'Utair', 'UT' );
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'Уральские авиалинии', 'U6' );
 
-INSERT INTO Airline ( AirlineName, IATACode )
+INSERT INTO airline ( airlinename, iatacode )
 VALUES ( 'Азимут', 'A4' );
 
 /*----------------------------------------------------------------------------------------------------------*/
