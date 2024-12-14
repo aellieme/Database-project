@@ -2,7 +2,7 @@ START TRANSACTION;
 
 /*----------------------------------------------------------------------------------------------------------*/
 
-REASSIGN OWNED BY "user" TO username;
+REASSIGN OWNED BY "user" TO postgres;
 DROP OWNED BY "user";
 
 REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA public FROM "user";
