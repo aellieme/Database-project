@@ -165,7 +165,7 @@ AFTER UPDATE ON flight
 FOR EACH ROW
 EXECUTE FUNCTION update_ticket_price();
 
-COMMENT ON TRIGGER update_price_on_flight_update ON ticket IS 'Триггер на таблицу со сведениями о рейсах с применением функции обновления итоговой стоимости билета';
+COMMENT ON TRIGGER update_price_on_flight_update ON flight IS 'Триггер на таблицу со сведениями о рейсах с применением функции обновления итоговой стоимости билета';
 
 /*----------------------------------------------------------------------------------------------------------*/
 
@@ -402,7 +402,7 @@ BEGIN
 	RETURN QUERY 
 	SELECT ticketid, flightid, fullname, passportnumber, seatnumber, meal, price
 	FROM ticket
-	ORDER BY ticketid;;
+	ORDER BY ticketid;
 END;
 $$ LANGUAGE plpgsql;
 
