@@ -3,40 +3,15 @@ import psycopg2
 import settings as st
 
 
-INSERT = '''
-    INSERT INTO Ticket ( FlightID, FullName, PassportNumber, SeatNumber, Meal )
-    VALUES ( %s, %s, %s, %s, %s )
-    RETURNING TicketID, Price;
-'''
+INSERT = 'SELECT * FROM ticket_insert(%s, %s, %s, %s, %s);'
 
+SELECT_ONE = 'SELECT * FROM ticket_select_one(%s);'
 
-SELECT_ONE = '''
-    SELECT FlightID, FullName, PassportNumber, SeatNumber, Meal, Price
-    FROM Ticket
-    WHERE TicketID = %s;
-'''
+UPDATE = 'CALL ticket_update(%s, %s, %s, %s, %s, %s);'
 
+DELETE = 'CALL ticket_delete(%s);'
 
-UPDATE = '''
-    UPDATE Ticket SET
-        FlightID = %s,
-        FullName = %s,
-        PassportNumber = %s,
-        SeatNumber = %s,
-        Meal = %s
-    WHERE TicketID = %s;
-'''
-
-
-DELETE = '''
-    DELETE FROM Ticket
-    WHERE TicketID = %s;
-'''
-
-
-TRUNCATE = '''
-    TRUNCATE TABLE Ticket CASCADE;
-'''
+TRUNCATE = 'CALL ticket_truncate();'
 
 
 @dataclass
@@ -64,7 +39,7 @@ class Ticket(object):
             with conn:
                 with conn.cursor() as cursor:
                     cursor.execute(INSERT, self.ticket_data)
-                    (self.ticketid, self.price) = next(cursor)
+                    (self.ticketid, ) = next(cursor)
         finally:
             conn.close()
     

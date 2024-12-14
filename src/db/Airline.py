@@ -3,37 +3,15 @@ import psycopg2
 import settings as st
 
 
-INSERT = '''
-    INSERT INTO Airline ( AirlineName, IATACode )
-    VALUES ( %s, %s )
-    RETURNING AirlineId;
-'''
+INSERT = 'SELECT * FROM airline_insert(%s, %s);'
 
+SELECT_ONE = 'SELECT * FROM airline_select_one(%s);'
 
-SELECT_ONE = '''
-    SELECT AirlineName, IATACode
-    FROM Airline
-    WHERE AirlineID = %s;
-'''
+UPDATE = 'CALL airline_update(%s, %s, %s);'
 
+DELETE = 'CALL airline_delete(%s);'
 
-UPDATE = '''
-    UPDATE Airline SET
-        AirlineName = %s,
-        IATACode = %s
-    WHERE AirlineID = %s;
-'''
-
-
-DELETE = '''
-    DELETE FROM Airline
-    WHERE AirlineID = %s;
-'''
-
-
-TRUNCATE = '''
-    TRUNCATE TABLE Airline CASCADE;
-'''
+TRUNCATE = 'CALL airline_truncate();'
 
 
 @dataclass

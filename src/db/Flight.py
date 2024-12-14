@@ -5,41 +5,15 @@ import settings as st
 import datetime as dt
 
 
-INSERT = '''
-    INSERT INTO Flight ( PlaneID, DepartureAirportID, ArrivalAirportID, FlightTime, Duration, BaseTicketPrice )
-    VALUES ( %s, %s, %s, %s,  %s, %s)
-    RETURNING FlightID;
-'''
+INSERT = 'SELECT * FROM flight_insert(%s, %s, %s, %s, %s, %s);'
 
+SELECT_ONE = 'SELECT * FROM flight_select_one(%s);'
 
-SELECT_ONE = '''
-    SELECT PlaneID, DepartureAirportID, ArrivalAirportID, FlightTime, Duration, BaseTicketPrice
-    FROM Flight
-    WHERE FlightID = %s;
-'''
+UPDATE = 'CALL flight_update(%s, %s, %s, %s, %s, %s, %s);'
 
+DELETE = 'CALL flight_delete(%s);'
 
-UPDATE = '''
-    UPDATE Flight SET
-        PlaneID = %s,
-        DepartureAirportID = %s,
-        ArrivalAirportID = %s,
-        FlightTime = %s, 
-        Duration = %s,
-        BaseTicketPrice = %s
-    WHERE FlightID = %s;
-'''
-
-
-DELETE = '''
-    DELETE FROM Flight
-    WHERE FlightID = %s;
-'''
-
-
-TRUNCATE = '''
-    TRUNCATE TABLE Flight CASCADE;
-'''
+TRUNCATE = 'CALL flight_truncate();'
 
 
 @dataclass

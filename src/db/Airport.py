@@ -3,37 +3,15 @@ import psycopg2
 import settings as st
 
 
-INSERT = '''
-    INSERT INTO Airport ( AirportName, City )
-    VALUES ( %s, %s )
-    RETURNING AirportID;
-'''
+INSERT = 'SELECT * FROM airport_insert(%s, %s);'
 
+SELECT_ONE = 'SELECT * FROM airport_select_one(%s);'
 
-SELECT_ONE = '''
-    SELECT AirportName, City
-    FROM Airport
-    WHERE AirportID = %s;
-'''
+UPDATE = 'CALL airport_update(%s, %s, %s);'
 
+DELETE = 'CALL airport_delete(%s);'
 
-UPDATE = '''
-    UPDATE Airport SET
-        AirportName = %s,
-        City = %s
-    WHERE AirportID = %s;
-'''
-
-
-DELETE = '''
-    DELETE FROM Airport
-    WHERE AirportID = %s;
-'''
-
-
-TRUNCATE = '''
-    TRUNCATE TABLE Airport CASCADE;
-'''
+TRUNCATE = 'CALL airport_truncate();'
 
 
 @dataclass

@@ -1,10 +1,7 @@
 from PyQt5.QtSql import QSqlQueryModel
 
 
-SELECT = '''
-    SELECT TicketID, FlightID, FullName, PassportNumber, SeatNumber, Meal, Price
-    FROM Ticket;
-'''
+SELECT = 'SELECT * FROM ticket_select();'
 
 
 class Model(QSqlQueryModel):
