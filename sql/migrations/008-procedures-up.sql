@@ -66,6 +66,17 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+
+CREATE PROCEDURE airport_search(airp_name VARCHAR(100))
+AS $$
+BEGIN
+    SELECT AirportName, similarity(AirportName, airp_name) AS similarity 
+    FROM Airport 
+    WHERE AirportName % airp_name 
+    ORDER BY similarity DESC;
+END;
+$$ LANGUAGE plpgsql;
+
 /*----------------------------------------------------------------------------------------------------------*/
 
 CREATE PROCEDURE airline_select()

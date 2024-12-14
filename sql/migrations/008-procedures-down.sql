@@ -38,6 +38,7 @@ DROP PROCEDURE IF EXISTS airline_select;
 
 /*----------------------------------------------------------------------------------------------------------*/
 
+DROP PROCEDURE IF EXISTS airport_search;
 DROP PROCEDURE IF EXISTS airport_insert;
 DROP PROCEDURE IF EXISTS airport_truncate;
 DROP PROCEDURE IF EXISTS airport_delete;

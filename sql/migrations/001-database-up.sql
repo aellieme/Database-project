@@ -2,6 +2,11 @@ START TRANSACTION;
 
 /*----------------------------------------------------------------------------------------------------------*/
 
+CREATE EXTENSION pg_trgm;
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+
 CREATE TABLE Airport (
 	AirportID 	SERIAL PRIMARY KEY,
 	AirportName VARCHAR(100) NOT NULL,
@@ -11,6 +16,12 @@ CREATE TABLE Airport (
 COMMENT ON TABLE Airport IS 'Сведения об аэропортах';
 COMMENT ON COLUMN Airport.AirportID	IS 'название аэропорта';
 COMMENT ON COLUMN Airport.AirportID	IS 'город, в котором находится аэропорт';
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+CREATE INDEX idx_airport_name ON Airport USING gist (AirportName gist_trgm_ops);
+
+COMMENT ON INDEX idx_airport_name IS 'Индекс по текстовому не ключевому полю AirportName в таблице Airport';
 
 /*----------------------------------------------------------------------------------------------------------*/
 
@@ -128,12 +139,6 @@ FOR EACH ROW
 EXECUTE FUNCTION calculate_price();
 
 COMMENT ON TRIGGER update_price ON Ticket IS 'Триггер на таблицу со сведениями о билетах с применением функции подсчета итоговой стоимости билета';
-
-/*----------------------------------------------------------------------------------------------------------*/
-
-CREATE INDEX idx_airport_name ON Airport(AirportName);
-
-COMMENT ON INDEX idx_airport_name IS 'Индекс по текстовому не ключевому полю AirportName в таблице Airport';
 
 /*----------------------------------------------------------------------------------------------------------*/
 
