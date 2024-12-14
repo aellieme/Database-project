@@ -2,11 +2,12 @@ START TRANSACTION;
 
 /*----------------------------------------------------------------------------------------------------------*/
 
-DROP INDEX 		IF EXISTS index_name;
+DROP INDEX 		IF EXISTS idx_airport_name;
 
 DROP TRIGGER 	IF EXISTS update_price ON Ticket;
 
-DROP FUNCTION 	IF EXISTS calculate_price();
+DROP FUNCTION 	IF EXISTS can_register_passenger;
+DROP FUNCTION 	IF EXISTS calculate_price;
 
 DROP TABLE 		IF EXISTS Ticket;
 DROP TABLE 		IF EXISTS Flight;
