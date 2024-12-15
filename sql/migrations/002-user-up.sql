@@ -3,7 +3,6 @@ START TRANSACTION;
 /*----------------------------------------------------------------------------------------------------------*/
 
 CREATE USER "user" WITH PASSWORD '1234';
-ALTER ROLE "user" CREATEDB;
 
 GRANT SELECT, UPDATE, INSERT, DELETE, TRUNCATE ON airport TO "user";
 GRANT SELECT, UPDATE, INSERT, DELETE, TRUNCATE ON airline TO "user";
