@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QTableView, QMessageBox, QApplication
 from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QFont
-#import emoji
+import emoji
 
 
 import db
@@ -55,7 +55,7 @@ class View(QTableView):
         self.__name_edt = QLineEdit()
         self.__name_edt.setMinimumHeight(30)
         self.__name_edt.setFont(font)
-        self.srch_btn = QPushButton('Найти')#emoji.emojize('Найти :magnifying_glass_tilted_right:', language='alias'))
+        self.srch_btn = QPushButton(emoji.emojize('Найти  :magnifying_glass_tilted_right:', language='alias'))
         self.srch_btn.setMinimumWidth(200)
         self.srch_btn.setFont(font)
         lay_hor.addWidget(self.__name_edt)

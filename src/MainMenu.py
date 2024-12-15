@@ -18,6 +18,10 @@ class MainMenu(QMenuBar):
         font.setPointSize(14)
         self.setFont(font)
         
+        db_menu = self.addMenu('База данных')
+        self.__dropdb = db_menu.addAction('Удалить')
+        self.__dropdb.setFont(font)
+        
         title = QApplication.translate('MainMenu', 'Airline')
         airline_menu = self.addMenu(title)
         self.__airline_menu_action = airline_menu.menuAction()
@@ -144,7 +148,7 @@ class MainMenu(QMenuBar):
         self.__about.setFont(font)
         title = QApplication.translate('MainMenu.Help', 'About Qt...')
         self.__about_qt = help_menu.addAction(title)
-        self.about_qt.setFont(font)
+        self.__about_qt.setFont(font)
         
         self.toggle_airline_mode(False)
         self.toggle_airport_mode(False)
@@ -224,6 +228,10 @@ class MainMenu(QMenuBar):
     @property
     def about_qt(self):
         return self.__about_qt
+    
+    @property
+    def dropdb(self):
+        return self.__dropdb
     
     def set_mode_airline(self, widget):
         self.__add_airline.triggered.connect(widget.add)

@@ -3,3 +3,4 @@ from .Airport import Airport
 from .Flight import Flight
 from .Plane import Plane
 from .Ticket import Ticket
+from .Database import Database
