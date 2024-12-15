@@ -15,6 +15,7 @@ class Dialog(QDialog):
         
         password_lbl = QLabel('Пароль', parent=self)
         self.__password_edt = QLineEdit(parent=self)
+        self.__password_edt.setEchoMode(QLineEdit.Password)
         
         ok_btn = QPushButton('ОК', parent=self)
         cancel_btn = QPushButton('Отмена', parent=self)

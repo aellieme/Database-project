@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QComboBox # выбор YES/NO
 from PyQt5.QtWidgets import QPushButton # кновка
 from PyQt5.QtWidgets import QVBoxLayout # вертикальная разметка окна
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
+from PyQt5.QtWidgets import QMessageBox # сообщение об (ошибке)
 
 from PyQt5.Qt import QApplication
 import psycopg2
@@ -108,17 +109,24 @@ class Dialog(QDialog):
         try:
             with conn:
                 with conn.cursor() as cursor:
-                    if self.id_flight is not None:
+                    if self.id_flight is not None and self.passport is not None and self.seat is not None:
+                        print('11111111111111')
                         cursor.execute(CAN_REGISTER, (self.id_flight, ))
                         if next(cursor):
                             if not constraint_check(
                                 ('FlightID', 'FullName', 'PassportNumber', 'SeatNumber'),
                                 (self.id_flight, self.name, len(self.passport), len(self.seat))
                                 ):
-                                return 
+                                QMessageBox.warning(self, 'Билет', 'Неверно введены данные')
+                            else:
+                                self.accept()
+                        else:
+                            QMessageBox.warning(self, 'Билет', 'Нет мест на этот рейс')
+                    else:
+                        QMessageBox.warning(self, 'Билет', 'Неверно введены данные')
+                    return 
         finally:
             conn.close()
-        self.accept()
     
     @property
     def id_flight(self):

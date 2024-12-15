@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QLineEdit # текст из одной строчк�
 from PyQt5.QtWidgets import QPushButton # кновка
 from PyQt5.QtWidgets import QVBoxLayout # вертикальная разметка окна
 from PyQt5.QtWidgets import QHBoxLayout # горизонтальная разметка окна
+from PyQt5.QtWidgets import QMessageBox # сообщение об (ошибке)
 
 from PyQt5.Qt import QApplication
 
@@ -62,6 +63,7 @@ class Dialog(QDialog):
             ('AirportName', 'City'), 
             (self.name, self.city)
             ):
+            QMessageBox.warning(self, 'Аэропорт', 'Неверно введены данные')
             return 
         self.accept()
     
