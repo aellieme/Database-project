@@ -421,7 +421,7 @@ RETURNS TABLE(
 ) AS $$
 BEGIN
 	RETURN QUERY
-	SELECT flightid, fullmame, passportnumber, seatnumber, meal, price
+	SELECT flightid, fullname, passportnumber, seatnumber, meal, price
 	FROM ticket 
 	WHERE ticketid = t_id;
 END;
