@@ -1,6 +1,10 @@
 from PyQt5.QtWidgets import QTableView, QMessageBox, QApplication
+from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout
 from PyQt5.QtCore import pyqtSlot, Qt
 from PyQt5.QtGui import QFont
+import emoji
+
+
 import db
 
 from .Model import Model
@@ -13,12 +17,6 @@ class View(QTableView):
         super().__init__(parent)
         
         model = Model(parent=self)
-        title = QApplication.translate('Airports.View', 'ID')
-        model.setHeaderData(0, Qt.Horizontal, title)
-        title = QApplication.translate('Airport.View', 'Airport Name')
-        model.setHeaderData(1, Qt.Horizontal, title)
-        title = QApplication.translate('Airport.View', 'City')
-        model.setHeaderData(2, Qt.Horizontal, title)
         self.setModel(model)
         
         font = QFont()
@@ -40,7 +38,43 @@ class View(QTableView):
         
         hh = self.horizontalHeader()
         hh.setSectionResizeMode(hh.ResizeToContents)
-        hh.setStyleSheet("QHeaderView { font-size: 20pt; }") 
+        hh.setStyleSheet("QHeaderView { font-size: 20pt; }")
+        
+        # widget
+        self.__widget = QWidget()
+        lay = QVBoxLayout()
+        
+        font = QFont()
+        font.setPointSize(15)
+        
+        lbl = QLabel('Поиск по названию аэропорта:')
+        lbl.setFont(font)
+        lay.addWidget(lbl)
+        
+        lay_hor = QHBoxLayout()
+        self.__name_edt = QLineEdit()
+        self.__name_edt.setMinimumHeight(30)
+        self.__name_edt.setFont(font)
+        self.srch_btn = QPushButton(emoji.emojize('Найти :magnifying_glass_tilted_right:', language='alias'))
+        self.srch_btn.setMinimumWidth(200)
+        self.srch_btn.setFont(font)
+        lay_hor.addWidget(self.__name_edt)
+        lay_hor.addWidget(self.srch_btn)
+        
+        lay.addLayout(lay_hor)
+        lay.addWidget(self)
+        self.widget.setLayout(lay)
+        
+        self.srch_btn.clicked.connect(self.search)
+    
+    @property
+    def widget(self):
+        return self.__widget
+    
+    @property
+    def name(self):
+        result = self.__name_edt.text().strip()
+        return result if result else None
     
     @property
     def airportid(self):
@@ -83,3 +117,7 @@ class View(QTableView):
         if ans == QMessageBox.Yes:
             db.Airport().truncate()
             self.model().fresh()
+    
+    @pyqtSlot()
+    def search(self):
+        self.model().fresh(name=self.name)

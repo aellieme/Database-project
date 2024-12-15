@@ -60,7 +60,10 @@ class Airport(object):
             with conn:
                 with conn.cursor() as cursor:
                     cursor.execute(SELECT_ONE, (self.airportid, ))
-                    (self.airportname, self.city) = next(cursor)
+                    try:
+                        (self.airportname, self.city) = cursor.fetchone()
+                    except:
+                        print('ERROR!!!!!!!!!!')
         finally:
             conn.close()
         

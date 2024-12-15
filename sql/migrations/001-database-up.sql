@@ -218,12 +218,14 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION airport_search(airp_name VARCHAR(100))
 RETURNS TABLE(
+	aid INT,
 	nam VARCHAR(100),
+	cit VARCHAR(100),
 	sim REAL
 ) AS $$
 BEGIN
 	RETURN QUERY
-	SELECT airportname, similarity(airportname, $1) AS similarity 
+	SELECT airportid, airportname, city, similarity(airportname, $1) AS similarity 
 	FROM airport 
 	WHERE airportname % $1
 	ORDER BY similarity DESC;

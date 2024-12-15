@@ -53,9 +53,9 @@ class MainWindow(QMainWindow):
     @pyqtSlot()
     def airport_mode_on(self):
         old = self.centralWidget()
-        v = Airports.View(parent=self)
+        v = Airports.View(parent=self).widget
         self.setCentralWidget(v)
-        self.menuBar().set_mode_airport(v)
+        self.menuBar().set_mode_airport(Airports.View(parent=self))
         if old is not None:
             old.deleteLater()
     
