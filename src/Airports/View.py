@@ -83,6 +83,7 @@ class View(QTableView):
     
     @pyqtSlot()
     def add(self):
+        self.__model = Model(parent=self)
         self.setModel(self.__model)
         dia = Dialog(parent=self)
         if dia.exec():
@@ -114,6 +115,7 @@ class View(QTableView):
     
     @pyqtSlot()
     def truncate(self):
+        self.__model = Model(parent=self)
         self.setModel(self.__model)
         title = QApplication.translate('Airports.View', 'Airport')
         q = QApplication.translate('Airports.View', 'Are you sure?')
@@ -124,5 +126,6 @@ class View(QTableView):
     
     @pyqtSlot()
     def search(self):
-        self.setModel(Model(parent=self, name=self.name))
+        self.__model = Model(parent=self, name=self.name)
+        self.setModel(self.__model)
         self.model().fresh()
