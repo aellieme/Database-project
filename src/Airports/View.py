@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QTableView, QMessageBox, QApplication
 from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout
-from PyQt5.QtCore import pyqtSlot, Qt
+from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QFont
-import emoji
+#import emoji
 
 
 import db
@@ -16,8 +16,8 @@ class View(QTableView):
     def __init__(self, parent=None):
         super().__init__(parent)
         
-        model = Model(parent=self)
-        self.setModel(model)
+        self.__model = Model(parent=self)
+        self.setModel(self.__model)
         
         font = QFont()
         font.setPointSize(20)
@@ -55,7 +55,7 @@ class View(QTableView):
         self.__name_edt = QLineEdit()
         self.__name_edt.setMinimumHeight(30)
         self.__name_edt.setFont(font)
-        self.srch_btn = QPushButton(emoji.emojize('Найти :magnifying_glass_tilted_right:', language='alias'))
+        self.srch_btn = QPushButton('Найти')#emoji.emojize('Найти :magnifying_glass_tilted_right:', language='alias'))
         self.srch_btn.setMinimumWidth(200)
         self.srch_btn.setFont(font)
         lay_hor.addWidget(self.__name_edt)
@@ -83,6 +83,7 @@ class View(QTableView):
     
     @pyqtSlot()
     def add(self):
+        self.setModel(self.__model)
         dia = Dialog(parent=self)
         if dia.exec():
             data = db.Airport()
@@ -92,6 +93,7 @@ class View(QTableView):
     
     @pyqtSlot()
     def update(self):
+        self.setModel(self.__model)
         dia = Dialog(parent=self)
         data = db.Airport(airportid=self.airportid).load()
         dia.put(data)
@@ -102,6 +104,7 @@ class View(QTableView):
     
     @pyqtSlot()
     def delete(self):
+        self.setModel(self.__model)
         title = QApplication.translate('Airports.View', 'Airport')
         q = QApplication.translate('Airports.View', 'Are you sure?')
         ans = QMessageBox.question(self, title, q)
@@ -111,6 +114,7 @@ class View(QTableView):
     
     @pyqtSlot()
     def truncate(self):
+        self.setModel(self.__model)
         title = QApplication.translate('Airports.View', 'Airport')
         q = QApplication.translate('Airports.View', 'Are you sure?')
         ans = QMessageBox.question(self, title, q)
@@ -120,4 +124,5 @@ class View(QTableView):
     
     @pyqtSlot()
     def search(self):
-        self.model().fresh(name=self.name)
+        self.setModel(Model(parent=self, name=self.name))
+        self.model().fresh()
