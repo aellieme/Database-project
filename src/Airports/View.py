@@ -94,24 +94,30 @@ class View(QTableView):
     
     @pyqtSlot()
     def update(self):
-        self.setModel(self.__model)
-        dia = Dialog(parent=self)
-        data = db.Airport(airportid=self.airportid).load()
-        dia.put(data)
-        if dia.exec():
-            dia.get(data)
-            data.save()
-            self.model().fresh()
+        if self.airportid:
+            self.setModel(self.__model)
+            dia = Dialog(parent=self)
+            data = db.Airport(airportid=self.airportid).load()
+            dia.put(data)
+            if dia.exec():
+                dia.get(data)
+                data.save()
+                self.model().fresh()
+        else:
+            QMessageBox.warning(self, 'Аэропорт', 'Сначала выберете нужный аэропорт')
     
     @pyqtSlot()
     def delete(self):
-        self.setModel(self.__model)
-        title = QApplication.translate('Airports.View', 'Airport')
-        q = QApplication.translate('Airports.View', 'Are you sure?')
-        ans = QMessageBox.question(self, title, q)
-        if ans == QMessageBox.Yes:
-            db.Airport(airportid=self.airportid).delete()
-            self.model().fresh()
+        if self.airportid:
+            self.setModel(self.__model)
+            title = QApplication.translate('Airports.View', 'Airport')
+            q = QApplication.translate('Airports.View', 'Are you sure?')
+            ans = QMessageBox.question(self, title, q)
+            if ans == QMessageBox.Yes:
+                db.Airport(airportid=self.airportid).delete()
+                self.model().fresh()
+        else:
+            QMessageBox.warning(self, 'Аэропорт', 'Сначала выберете нужный аэропорт')
     
     @pyqtSlot()
     def truncate(self):

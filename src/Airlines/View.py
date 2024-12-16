@@ -54,22 +54,28 @@ class View(QTableView):
     
     @pyqtSlot()
     def update(self):
-        dia = Dialog(parent=self)
-        data = db.Airline(airlineid=self.airlineid).load()
-        dia.put(data)
-        if dia.exec():
-            dia.get(data)
-            data.save()
-            self.model().fresh()
+        if self.airlineid:
+            dia = Dialog(parent=self)
+            data = db.Airline(airlineid=self.airlineid).load()
+            dia.put(data)
+            if dia.exec():
+                dia.get(data)
+                data.save()
+                self.model().fresh()
+        else:
+            QMessageBox.warning(self, 'Авиакомпания', 'Сначала выберете нужную авиакомпанию')
     
     @pyqtSlot()
     def delete(self):
-        title = QApplication.translate('Airlines.View', 'Airline')
-        q = QApplication.translate('Airlines.View', 'Are you sure?')
-        ans = QMessageBox.question(self, title, q)
-        if ans == QMessageBox.Yes:
-            db.Airline(airlineid=self.airlineid).delete()
-            self.model().fresh()
+        if self.airlineid:
+            title = QApplication.translate('Airlines.View', 'Airline')
+            q = QApplication.translate('Airlines.View', 'Are you sure?')
+            ans = QMessageBox.question(self, title, q)
+            if ans == QMessageBox.Yes:
+                db.Airline(airlineid=self.airlineid).delete()
+                self.model().fresh()
+        else:
+            QMessageBox.warning(self, 'Авиакомпания', 'Сначала выберете нужную авиакомпанию')
     
     @pyqtSlot()
     def truncate(self):
