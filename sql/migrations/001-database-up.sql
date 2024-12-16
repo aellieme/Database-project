@@ -151,6 +151,43 @@ COMMENT ON FUNCTION can_register_passenger IS 'Проверка возможно
 
 /*----------------------------------------------------------------------------------------------------------*/
 
+CREATE OR REPLACE FUNCTION check_duplicate_flight_passport(
+	f_id INT, 
+	pas VARCHAR(10)
+) RETURNS BOOLEAN
+AS
+$$
+DECLARE result BOOLEAN;
+BEGIN
+    SELECT CASE WHEN EXISTS 
+    (SELECT 1 FROM ticket WHERE flightid = f_id AND passportnumber = pas) 
+    THEN FALSE ELSE TRUE END INTO result;
+    RETURN result;
+END;
+$$ LANGUAGE plpgsql;
+
+COMMENT ON FUNCTION check_duplicate_flight_passport IS 'Проверка возможности регистрации пассажира на тот же рейс';
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+CREATE OR REPLACE FUNCTION check_duplicate_flight_seatnumber(
+	f_id INT, 
+	stn VARCHAR(3)
+) RETURNS BOOLEAN AS
+$$
+DECLARE result BOOLEAN;
+BEGIN
+    SELECT CASE WHEN EXISTS 
+    (SELECT 1 FROM ticket WHERE flightid = f_id AND seatnumber = stn) 
+    THEN FALSE ELSE TRUE END INTO result;
+    RETURN result;
+END;
+$$ LANGUAGE plpgsql;
+
+COMMENT ON FUNCTION check_duplicate_flight_seatnumber IS 'Проверка возможности регистрации на тоже место в самолете';
+
+/*----------------------------------------------------------------------------------------------------------*/
+
 CREATE TRIGGER update_price
 BEFORE INSERT OR UPDATE ON ticket
 FOR EACH ROW
