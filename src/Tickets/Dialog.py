@@ -110,9 +110,9 @@ class Dialog(QDialog):
             with conn:
                 with conn.cursor() as cursor:
                     if self.id_flight is not None and self.passport is not None and self.seat is not None:
-                        print('11111111111111')
                         cursor.execute(CAN_REGISTER, (self.id_flight, ))
-                        if next(cursor):
+                        ok = next(cursor)[0]
+                        if ok:
                             if not constraint_check(
                                 ('FlightID', 'FullName', 'PassportNumber', 'SeatNumber'),
                                 (self.id_flight, self.name, len(self.passport), len(self.seat))
