@@ -158,7 +158,6 @@ class MainMenu(QMenuBar):
     
     @pyqtSlot(bool)
     def toggle_airline_mode(self, enable):
-        print(f'Airline={enable}')
         if not enable:
             self.__add_airline.setEnabled(False)
             self.__edit_airline.setEnabled(False)
@@ -171,7 +170,6 @@ class MainMenu(QMenuBar):
     
     @pyqtSlot(bool)
     def toggle_airport_mode(self, enable):
-        print(f'Airport={enable}')
         if not enable:
             self.__add_airport.setEnabled(False)
             self.__edit_airport.setEnabled(False)
@@ -184,7 +182,6 @@ class MainMenu(QMenuBar):
     
     @pyqtSlot(bool)
     def toggle_flight_mode(self, enable):
-        print(f'Flight={enable}')
         if not enable:
             self.__add_flight.setEnabled(False)
             self.__edit_flight.setEnabled(False)
@@ -197,7 +194,6 @@ class MainMenu(QMenuBar):
     
     @pyqtSlot(bool)
     def toggle_plane_mode(self, enable):
-        print(f'Plane={enable}')
         if not enable:
             self.__add_plane.setEnabled(False)
             self.__edit_plane.setEnabled(False)
@@ -210,7 +206,6 @@ class MainMenu(QMenuBar):
     
     @pyqtSlot(bool)
     def toggle_ticket_mode(self, enable):
-        print(f'Ticket={enable}')
         if not enable:
             self.__add_ticket.setEnabled(False)
             self.__edit_ticket.setEnabled(False)
