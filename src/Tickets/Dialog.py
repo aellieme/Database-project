@@ -17,9 +17,7 @@ import db
 from .constraints import constraint_check
 
 
-CAN_REGISTER = '''
-    SELECT can_register_passenger(%s);
-'''
+CAN_REGISTER = 'SELECT can_register_passenger(%s);'
 
 
 def is_seat(string: str) -> bool:

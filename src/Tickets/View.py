@@ -62,8 +62,14 @@ class View(QTableView):
         if dia.exec():
             data = db.Ticket()
             dia.get(data)
-            data.save()
-            self.model().fresh()
+            ok = data.save()
+            if ok == 'PASSPORT':
+                QMessageBox.warning(self, 'Билет', 'Билет на этот рейс уже куплен данным пассажиром')
+            elif ok == 'SEATNUMBER':
+                QMessageBox.warning(self, 'Билет', 'Это место на рейсе занято')
+            else:
+                self.model().fresh()
+           
     
     @pyqtSlot()
     def update(self):

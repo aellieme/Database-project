@@ -13,6 +13,10 @@ DELETE = 'CALL ticket_delete(%s);'
 
 TRUNCATE = 'CALL ticket_truncate();'
 
+CHECK_PASSPORT = 'SELECT check_duplicate_flight_passport(%s, %s);'
+
+CHECK_SEATNUMBER = 'SELECT check_duplicate_flight_seatnumber(%s, %s);'
+
 
 @dataclass
 class Ticket(object):
@@ -54,7 +58,21 @@ class Ticket(object):
     
     def save(self):
         if self.ticketid is None:
-            return self.insert()
+            conn = psycopg2.connect(**st.db_params)
+            try:
+                with conn:
+                    with conn.cursor() as cursor:
+                        cursor.execute(CHECK_PASSPORT, (self.flightid, self.passportnumber))
+                        ok1 = next(cursor)[0]
+                        cursor.execute(CHECK_SEATNUMBER, (self.flightid, self.seatnumber))
+                        ok2 = next(cursor)[0]
+                        if ok1 and ok2:
+                            return self.insert()
+                        elif not ok1:
+                            return 'PASSPORT'
+                        return 'SEATNUMBER'
+            finally:
+                conn.close()
         else:
             return self.update()
     
