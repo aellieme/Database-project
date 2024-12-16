@@ -59,10 +59,11 @@ class MainWindow(QMainWindow):
         if dia.exec():
             data = db.Database()
             dia.get(data)
-            ok = data.drop()
+            ok = data.check()
             if ok:
                 ans = QMessageBox.question(self, 'База данных', 'Вы уверены?')
                 if ans == QMessageBox.Yes:
+                    data.drop()
                     mb = QMessageBox(QMessageBox.Information, 'ВНИМАНИЕ',
                                      'База данных удалена.\n\n'
                                      'После закрытия этого окна произойдёт выход из приложения.\n\n'

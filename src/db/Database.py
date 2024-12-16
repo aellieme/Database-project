@@ -9,7 +9,7 @@ class Database(object):
     password: str = None
     
     def drop(self):
-        if self.login == 'postgres' and self.password == '1234':
-            os.system('./dropdb_script.sh')
-            return True
-        return False
+        os.system('./dropdb_script.sh')
+    
+    def check(self):
+        return self.login == 'postgres' and self.password == '1234'
